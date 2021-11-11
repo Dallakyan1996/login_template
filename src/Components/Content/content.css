@@ -1,0 +1,28 @@
+.content {
+    grid-area: c;
+    padding: 1rem;
+    padding-left: 2rem;
+}
+
+.chartsWrapper {
+    display: flex;
+    /* height: 10rem; */
+}
+
+.chart1, .chart2, .chart3, .chart4 {
+    width: 50rem;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.table1 {
+    margin-top: 5rem;
+}
+
+.MuiInput-root {
+    height: 4rem !important;
+    font-size: 1.5rem !important;
+}

@@ -1,0 +1,65 @@
+.App {
+  text-align: center;
+}
+
+.algorithmPDF{
+  background-color: white !important;
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.Jumbotron {
+  padding: 0;
+}
+
+/* .logout_btn {
+  
+} */
+
+.login_header {
+  background: #084e87;
+  padding: 28px;
+}
+
+.login_header h2 {
+  color: white;
+  text-align: left;
+}
+
+.backBtn {
+  font-size: 22px;
+  color: #28344e;
+  transition: 0.3s;
+}
+
+.backBtn::before {
+  margin-right: 0.5rem;
+  transition: 0.5s;
+}
+
+.backBtn:hover:before {
+  margin-right: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  flex: 2;
+  height: calc(100vh - 150px );
+  overflow-y: auto;
+}

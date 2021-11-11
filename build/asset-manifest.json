@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ddd36756.chunk.css",
+    "main.js": "/static/js/main.ec5bcb9d.chunk.js",
+    "main.js.map": "/static/js/main.ec5bcb9d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.dc4e364e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.dc4e364e.js.map",
+    "static/css/2.c9e89b8b.chunk.css": "/static/css/2.c9e89b8b.chunk.css",
+    "static/js/2.2ec1b883.chunk.js": "/static/js/2.2ec1b883.chunk.js",
+    "static/js/2.2ec1b883.chunk.js.map": "/static/js/2.2ec1b883.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.c9e89b8b.chunk.css.map": "/static/css/2.c9e89b8b.chunk.css.map",
+    "static/css/main.ddd36756.chunk.css.map": "/static/css/main.ddd36756.chunk.css.map",
+    "static/js/2.2ec1b883.chunk.js.LICENSE.txt": "/static/js/2.2ec1b883.chunk.js.LICENSE.txt",
+    "static/media/CFU_Description_v0.13_06-Oct-2021.35cb78c2.pdf": "/static/media/CFU_Description_v0.13_06-Oct-2021.35cb78c2.pdf",
+    "static/media/loader.b50b39c2.svg": "/static/media/loader.b50b39c2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dc4e364e.js",
+    "static/css/2.c9e89b8b.chunk.css",
+    "static/js/2.2ec1b883.chunk.js",
+    "static/css/main.ddd36756.chunk.css",
+    "static/js/main.ec5bcb9d.chunk.js"
+  ]
+}
