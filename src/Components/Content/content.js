@@ -3,24 +3,22 @@ import Charts from '../Charts/PieChart';
 import MatTable from '../Table/Table.js'
 
 const Cont = () => {
+
     return <>
         <div className="dashboardWrapper">
             <div className="chartsWrapper">
                 <div className="chart1">
-                    <Charts />
-                </div>
-                <div className="chart2">
-                    <Charts />
+                    <Charts type="spline" />
                 </div>
                 <div className="chart3">
-                    <Charts />
+                    <Charts type="pie" />
                 </div>
                 <div className="chart4">
-                    <Charts />
+                    <Charts type="line" />
                 </div>
             </div>
             <div className="table1">
-                <MatTable/>
+                <MatTable />
             </div>
         </div>
     </>

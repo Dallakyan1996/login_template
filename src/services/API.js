@@ -87,13 +87,29 @@ function getRevoke() {
 //         });
 // }
 
+// function login(email, password) {
+//     const requestOptions = {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify({ email, password })
+//     };
+//     return fetch('http://laravel.test/api/login', requestOptions)
+//         .then(handleResponse)
+//         .then(user => {
+//             localStorage.setItem('toDoCurrentUser', JSON.stringify(user));
+//             currentUserSubject.next(user);
+//             return user;
+//             console.log(user)
+//         });
+// }
+
+
 function login(email, password) {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
     };
-
     return fetch('http://localhost:3001/auth/login', requestOptions)
         .then(handleResponse)
         .then(user => {
@@ -102,6 +118,7 @@ function login(email, password) {
             return user;
         });
 }
+
 function patientStatus(site_id, patient_id) {
     if (JSON.parse(localStorage.getItem('cfuCurrentUser')) !== null) {
         var acces_token = JSON.parse(localStorage.getItem('cfuCurrentUser')).access_token.toString()
