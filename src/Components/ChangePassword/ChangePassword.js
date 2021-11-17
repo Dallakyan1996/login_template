@@ -1,6 +1,6 @@
 import './changePassword.css';
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as Yup from "yup";
 import { authenticationService } from "../../services/API";
 

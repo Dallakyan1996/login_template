@@ -1,6 +1,6 @@
 import "./SideBar.css";
 import { NavLink } from 'react-router-dom';
-import { FaChartBar, FaSearch, FaUserFriends, FaRegFilePdf, FaUserPlus, FaUserMinus } from "react-icons/fa";
+import { FaChartBar, FaUserFriends, FaRegFilePdf, FaUserPlus, FaUserMinus, FaChartLine } from "react-icons/fa";
 import algorithmPDF from "./../../Assets/PDF/CFU_Description_v0.13_06-Oct-2021.pdf"
 
 const SideBar = () => {
@@ -16,10 +16,10 @@ const SideBar = () => {
                     </NavLink>
                 </li>
                 <li className="has-subnav search">
-                    <NavLink exact activeClassName="active" to="/search">
-                        <FaSearch className="sideBarIcons" />
+                    <NavLink exact activeClassName="active" to="/line">
+                        <FaChartLine className="sideBarIcons" />
                         <span className='nav-text'>
-                            Search
+                            Line graph
                         </span>
                     </NavLink>
                 </li>

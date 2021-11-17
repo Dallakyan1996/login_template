@@ -3,11 +3,9 @@ import React from "react";
 import { authenticationService } from "../../services/API";
 import { Link } from 'react-router-dom';
 import { history } from './../../helpers/history';
-import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import './Header.css';
-import { DropdownButton } from 'react-bootstrap';
-import { MenuItem } from 'react-bootstrap';
+
 
 const Header = () => {
   const logout = () => {
@@ -15,22 +13,7 @@ const Header = () => {
     history.push('/login');
   }
 
-  const options = [
-    { value: 'one', label: 'One' },
-    { value: 'two', label: 'Two', className: 'myOptionClassName' },
-    {
-      type: 'group', name: 'group1', items: [
-        { value: 'three', label: 'Three', className: 'myOptionClassName' },
-        { value: 'four', label: 'Four' }
-      ]
-    },
-    {
-      type: 'group', name: 'group2', items: [
-        { value: 'five', label: 'Five' },
-        { value: 'six', label: 'Six' }
-      ]
-    }
-  ];
+
 
   return (
     <div className="header">

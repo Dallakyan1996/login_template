@@ -1,20 +1,21 @@
 import React from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
+import "./line-chart.css"
 require("highcharts/modules/exporting")(Highcharts)
 
-const Charts = (props) => {
+const LineChart = (props) => {
     let options = {
         chart: {
-            type: "pie"
+            type: "spline"
         },
         title: {
-            text: 'Chart Title'
+            text: 'Line Title'
         },
         xAxis: {
             categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'],
             labels: {
-                // rotation: -45,
+                rotation: -45,
                 style: {
                     fontSize: '13px',
                     fontFamily: 'Verdana, sans-serif'
@@ -28,8 +29,8 @@ const Charts = (props) => {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
         },
         plotOptions: {
-            pie: {
-                size: '70%',
+            line: {
+                size: '20%',
                 allowPointSelect: true,
                 cursor: "pointer",
                 dataLabels: {
@@ -46,11 +47,11 @@ const Charts = (props) => {
             name: 'John',
             colorByPoint: true,
             data: [
-                ["A", 5],
-                ["B", 3],
-                ["C", 4],
-                ["D", 7],
-                ["E", 2]
+                ["A", props.a],
+                ["B", props.b],
+                ["C", props.b + 100 * Math.random()],
+                ["D", props.b - 230 * Math.random()],
+                ["E", props.b / Math.random()]
             ]
         }]
     }
@@ -63,4 +64,4 @@ const Charts = (props) => {
     </>
 }
 
-export default Charts;
+export default LineChart;
