@@ -1,7 +1,6 @@
 import "./SideBar.css";
 import { NavLink } from 'react-router-dom';
-import { FaChartBar, FaUserFriends, FaRegFilePdf, FaUserPlus, FaUserMinus, FaChartLine } from "react-icons/fa";
-import algorithmPDF from "./../../Assets/PDF/CFU_Description_v0.13_06-Oct-2021.pdf"
+import { FaChartBar, FaUserFriends,  FaUserPlus, FaUserMinus, FaChartLine } from "react-icons/fa";
 
 const SideBar = () => {
     return <>
@@ -47,29 +46,6 @@ const SideBar = () => {
                         </span>
                     </NavLink>
                 </li>
-                <li className="has-subnav usersListEnable">
-                    <NavLink activeClassName="active" target="_blank" to={algorithmPDF}>
-                        <FaRegFilePdf className="sideBarIcons" />
-                        <span className='nav-text'>
-                            Algorithm Description
-                        </span>
-                    </NavLink>
-                </li>
-                {/* <li className="has-subnav usersListEnable">
-                    <NavLink activeClassName="active"
-                        to='/create-user-request'>
-                        <FaRegFilePdf className="sideBarIcons" />
-                        <span className='nav-text'>
-                            create
-                        </span>
-                    </NavLink>
-                </li> */}
-                {/* <li className="has-subnav notifications">
-                    <FaBell className="sideBarIcons" />
-                    <span className='nav-text'>
-                        Notifications
-                    </span>
-                </li> */}
             </ul>
         </nav>
     </>

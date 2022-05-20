@@ -2,7 +2,7 @@ import './changePassword.css';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
-import { authenticationService } from "../../services/API";
+import { apiServices } from "../../services/API";
 
 const ChangePassword = () => {
     const [successText, setSuccessText] = useState("")
@@ -33,7 +33,7 @@ const ChangePassword = () => {
                             { setStatus, setSubmitting }
                         ) => {
                             setStatus();
-                            authenticationService.changePasswordPost(oldPassword, newPassword, confirmPassword).then(
+                            apiServices.changePasswordPost(oldPassword, newPassword, confirmPassword).then(
                                 (res) => {
                                     if (res.success) {
                                         setSuccessText(res.success)

@@ -102,10 +102,10 @@ const LineChartTable = () => {
             birthCity: "Brazil"
         }
     ]);
-    const tableData = {
-        columns,
-        data
-    };
+    // const tableData = {
+    //     columns,
+    //     data
+    // };
     return (
         // <DataTableExtensions
         //     search

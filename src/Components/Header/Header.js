@@ -1,6 +1,6 @@
 import "./Header.css";
 import React from "react";
-import { authenticationService } from "../../services/API";
+import { apiServices } from "../../services/API";
 import { Link } from 'react-router-dom';
 import { history } from './../../helpers/history';
 import 'react-dropdown/style.css';
@@ -9,7 +9,7 @@ import './Header.css';
 
 const Header = () => {
   const logout = () => {
-    authenticationService.logout();
+    apiServices.logout();
     history.push('/login');
   }
 
@@ -20,9 +20,9 @@ const Header = () => {
       <Link to='/'>
         <span className="testSpan">DCR-A1AT-201: Conditional Follow-Up Portal</span>
       </Link>
-      {/* <div className="fakeDataInfo">
+      <div className="fakeDataInfo">
         Please note that this is a test data for UAT.
-      </div> */}
+      </div>
       <div className="dropdown show">
         <a
           className="drop"
@@ -35,7 +35,7 @@ const Header = () => {
         >
 
           {/* <span className="userSpan"> */}
-          {/* <span className='userName'>{authenticationService.currentUserValue.firstName}</span> */}
+          {/* <span className='userName'>{apiServices.currentUserValue.firstName}</span> */}
           <img
             className="userImg"
             src="https://a1at.studymonitoring.net/img/undraw_profile.svg"
