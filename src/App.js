@@ -5,12 +5,11 @@ import Header from "./Components/Header/Header";
 import SideBar from "./Components/SideBar/SideBar";
 import { LoginPage } from "./Components/LoginPage/LoginPage";
 import ChangePassword from './Components/ChangePassword/ChangePassword';
-import Footer from './Components/Footer/footer';
-import Dashboard from "./Components/Dashboard/Dashboard";
 import PageNotFound from "./Components/PageNotFound/PageNotFound";
 import "./App.css";
 import LineChartTable from "./Components/Table/LineChartTable";
 import { localStorageLogin } from "./utils/constants";
+import RulesComponent from "./Components/RulesPage/RulesComp";
 
 const App = (props) => {
   const location = useLocation();
@@ -30,15 +29,14 @@ const App = (props) => {
               <div id="content" className="content">
                 <Switch>
                   <PrivateRoute exact path="/change-password" component={ChangePassword} />
+                  <Route exact path="/" component={RulesComponent} />
                   <Route exact path="/line" component={LineChartTable} />
-                  <Route exact path="/" component={Dashboard} />
                   <Route component={PageNotFound} />
                 </Switch>
               </div>
             </div>
           </> : <Redirect to="/login" />}
         <Route exact path="/login" component={LoginPage} />
-        {/* <Footer /> */}
       </>
     </>
   );

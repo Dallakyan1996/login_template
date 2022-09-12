@@ -89,7 +89,7 @@ nav ul, nav li {
 
 .search:hover, .usersListEnable:hover, .dashboard:hover {
   color: #fff;
-  background-color: #24aeaacc;
+  background: linear-gradient(#52CAC6, #52C9C9, #56BCED);
 }
 
 .menu {
@@ -150,7 +150,7 @@ nav ul, nav li {
 
 .active {
   color: #fff;
-  background-color: #24aeaacc;
+  background: linear-gradient(#52CAC6, #52C9C9, #56BCED);
   cursor: auto;
 }
 

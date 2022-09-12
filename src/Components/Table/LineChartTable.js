@@ -114,22 +114,6 @@ const LineChartTable = () => {
         //     {...tableData}
         // >
         <div className="lineChartWrapper">
-            <div className="lineChartTable">
-                <DataTable
-                    noHeader
-                    expand={true}
-                    title=""
-                    columns={columns}
-                    data={data}
-                    customStyles={customStyles}
-                />
-            </div>
-            <div className="lineChart">
-                <div className="subjectsCard">
-                    <div className="cardHeader allSubjectsHeader">All Subjects</div>
-                    <LineChart a={count.a} b={count.b} />
-                </div>
-            </div>
         </div>
         // </DataTableExtensions>
     )

@@ -1,6 +1,4 @@
 import './dashboard.css';
-import Charts from '../Charts/PieChart';
-import MatTable from '../Table/Table.js'
 
 const Dashboard = () => {
     return <>
