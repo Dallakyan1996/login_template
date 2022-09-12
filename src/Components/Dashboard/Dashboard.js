@@ -5,7 +5,7 @@ import MatTable from '../Table/Table.js'
 const Dashboard = () => {
     return <>
         <div className="dashboardWrapper">
-            <div className="chartsWrapper">
+            {/* <div className="chartsWrapper">
                 <div className="chart1">
                     <div className="subjectsCard">
                         <div className="cardHeader allSubjectsHeader">All Subjects</div>
@@ -27,7 +27,7 @@ const Dashboard = () => {
             </div>
             <div className="table1">
                 <MatTable />
-            </div>
+            </div> */}
         </div>
     </>
 }

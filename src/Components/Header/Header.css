@@ -1,7 +1,7 @@
 .header {
   height: 60px;
   width: 100%;
-  background: #084e87;
+  background: #F5F8FD;
   flex-flow: row nowrap;
   position: relative;
   display: flex;
@@ -15,7 +15,7 @@
 }
 
 .userSpan, .testSpan {
-  color: white;
+  color: #172B4D;
   display: inline;
   padding: 10px;
   font-size: 20px;
@@ -80,19 +80,4 @@
 
 .dropdown-menu a:hover {
   background-color: rgb(242, 244, 246);
-}
-
-.fakeDataInfo {
-  padding: 10px;
-  height: 4rem;
-  /* max-width: 20%; */
-  margin-right: 10%;
-  color: rgba(255, 0, 0, 0.863);
-  background: #c1dbef 0 0 no-repeat padding-box;
-  font-size: 1.8rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-style: italic;
-  overflow: hidden;
 }

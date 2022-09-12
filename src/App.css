@@ -29,7 +29,7 @@
 } */
 
 .login_header {
-  background: #084e87;
+  background: #52CAC6;
   padding: 28px;
 }
 
@@ -56,10 +56,12 @@
 .wrapper {
   display: flex;
   flex-direction: row;
+  background-color: #F5F8FD;
 }
 
 .content {
   flex: 2;
-  height: calc(100vh - 150px );
+  /* height: calc(100vh - 150px ); */
+  background-color: #F5F8FD;
   overflow-y: auto;
 }

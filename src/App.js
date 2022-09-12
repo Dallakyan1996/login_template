@@ -38,7 +38,7 @@ const App = (props) => {
             </div>
           </> : <Redirect to="/login" />}
         <Route exact path="/login" component={LoginPage} />
-        <Footer />
+        {/* <Footer /> */}
       </>
     </>
   );

@@ -20,9 +20,6 @@ const Header = () => {
       <Link to='/'>
         <span className="testSpan">DCR-A1AT-201: Conditional Follow-Up Portal</span>
       </Link>
-      <div className="fakeDataInfo">
-        Please note that this is a test data for UAT.
-      </div>
       <div className="dropdown show">
         <a
           className="drop"
