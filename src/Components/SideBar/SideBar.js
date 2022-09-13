@@ -1,6 +1,6 @@
 import "./SideBar.css";
 import { NavLink } from 'react-router-dom';
-import { FaChartBar, FaUserFriends,  FaUserPlus, FaUserMinus, FaChartLine } from "react-icons/fa";
+import { FaChartBar, FaChartLine } from "react-icons/fa";
 
 const SideBar = () => {
     return <>

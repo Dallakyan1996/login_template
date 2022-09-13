@@ -65,7 +65,6 @@
     display: flex;
     border-bottom: solid 1px #EDF1F8;
     margin-bottom: 3rem;
-    padding-bottom: 4rem;
 
 }
 
@@ -139,6 +138,8 @@
 .rulesAndOrBtns {
     margin-top: 1.5rem;
     justify-content: start;
+    border-bottom: solid 1px #ccc;
+    padding-bottom: 19px;
 }
 
 
@@ -159,3 +160,19 @@
 .crtNewAdd {
     margin-right: 2rem;
 }
+
+.submitCancelDiv {
+    padding-top: 3rem;
+    justify-content: flex-end;
+}
+
+.sbtBtn, .cncBtn {
+    margin-left: 2rem;
+    min-width: 85px !important;
+}
+
+.cncBtn {
+    background: white !important;
+    color: red;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+} 

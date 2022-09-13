@@ -18,7 +18,7 @@ const Header = () => {
   return (
     <div className="header">
       <Link to='/'>
-        <span className="testSpan">DCR-A1AT-201: Conditional Follow-Up Portal</span>
+        <span className="testSpan">DLCO</span>
       </Link>
       <div className="dropdown show">
         <a
