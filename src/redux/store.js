@@ -1,6 +1,6 @@
 import { createStore } from "redux";
-import patientInfo from "../reducers/patient-info-reducer";
+import rulesArrReducer from "../reducers/rules-reducer";
 
-const store = createStore(patientInfo)
+const store = createStore(rulesArrReducer)
 
 export  default store

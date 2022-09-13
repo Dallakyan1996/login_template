@@ -18,7 +18,7 @@ const SideBar = () => {
                     <NavLink exact activeClassName="active" to="/line">
                         <FaChartLine className="sideBarIcons" />
                         <span className='nav-text'>
-                            Line graph
+                            Summary
                         </span>
                     </NavLink>
                 </li>

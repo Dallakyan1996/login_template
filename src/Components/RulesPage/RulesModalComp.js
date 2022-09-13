@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 // import { SketchPicker } from 'react-color'
 import Select from "react-select";
 
@@ -17,23 +19,32 @@ const customStyles = {
 };
 
 const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
+  const dispatch = useDispatch()
   let [secComp, setSecComp] = useState(false);
-  let [rulesArr, setRullesArr] = useState([]);
-  let [comp1Selectors, setComp1Selectors] = useState({
-    ruleName: "",
-    ruleColor: "",
-    endPoint: "",
-    change: "",
-    direction: "",
-    amount: "",
-  });
-
-  let [comp2Selectors, setComp2Selectors] = useState({
-    endPoint: "",
-    change: "",
-    direction: "",
-    amount: "",
-  });
+  let rulesArrState = useSelector(state => state.rulesArr)
+  let date = new Date()
+  let [comp1Selectors, setComp1Selectors] = useState(
+    {
+      ruleName: "",
+      ruleColor: "black",
+      endPoint: {
+        comp1: "Predicted DLCO",
+        comp2: "Predicted DLCO"
+      },
+      change: {
+        comp1: "Absolute",
+        comp2: "Absolute"
+      },
+      direction: {
+        comp1: "More than",
+        comp2: "More than"
+      },
+      amount: {
+        comp1: null,
+        comp2: null
+      },
+      created_at: date.toDateString()
+    });
 
   function closeModal() {
     setIsOpen(false);
@@ -41,9 +52,21 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
   }
 
   useEffect(() => {
-    setRullesArr(JSON.parse(localStorage.getItem("rules")));
-    console.log(rulesArr)
+    if (JSON.parse(localStorage.getItem("rules"))?.lenght) {
+      dispatch({
+        type: "SET-RULES-ARR",
+        payload: {
+          data: JSON.parse(localStorage.getItem("rules"))
+        }
+      })
+    }
   }, []);
+
+  useEffect(() => {
+    if (rulesArrState.length) {
+      localStorage.setItem("rules", JSON.stringify(rulesArrState));
+    }
+  }, [rulesArrState]);
   return (
     <Modal
       isOpen={modalIsOpen}
@@ -66,7 +89,7 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
               onChange={(e) => {
                 setComp1Selectors({
                   ...comp1Selectors,
-                  name: e.target.value,
+                  ruleName: e.target.value,
                 });
               }}
             ></input>
@@ -80,7 +103,7 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
               onChange={(e) => {
                 setComp1Selectors({
                   ...comp1Selectors,
-                  color: e.target.value,
+                  ruleColor: e.target.value,
                 });
               }}
             ></input>
@@ -95,12 +118,11 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
           />
           {secComp && (
             <RulesComponent
-              compSel={comp2Selectors}
-              setCompSel={setComp2Selectors}
+              compSel={comp1Selectors}
+              setCompSel={setComp1Selectors}
               componentName="Component 2"
             />
           )}
-          {/* <RulesComponent componentName="Component 2" /> */}
         </div>
         <div className="componentWrapperRule rulesAndOrBtns">
           <button
@@ -124,14 +146,46 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
           <button
             className="crtNewRulBtn sbtBtn"
             onClick={() => {
-              localStorage.setItem([setComp1Selectors]);
+              let date = new Date()
+              setComp1Selectors({
+                ...comp1Selectors,
+                created_at: date
+              })
+              dispatch({
+                type: "SET-RULES-ARR",
+                payload: {
+                  data: [...rulesArrState, comp1Selectors]
+                }
+              })
+              setComp1Selectors({
+                ruleName: "",
+                ruleColor: "black",
+                endPoint: {
+                  comp1: "Predicted DLCO",
+                  comp2: "Predicted DLCO"
+                },
+                change: {
+                  comp1: "Absolute",
+                  comp2: "Absolute"
+                },
+                direction: {
+                  comp1: "More than",
+                  comp2: "More than"
+                },
+                amount: {
+                  comp1: null,
+                  comp2: null
+                },
+                created_at: date.toDateString()
+              })
+              closeModal()
             }}
           >
             Submit
           </button>
         </div>
       </div>
-    </Modal>
+    </Modal >
   );
 };
 
@@ -143,10 +197,18 @@ const RulesComponent = ({
   compSel,
   setCompSel,
 }) => {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+  let a = []
+  const optEndpoint = [
+    { value: "Predicted DLCO", label: "Predicted DLCO" },
+    { value: "Predicted FEV1", label: "Predicted FEV1" },
+    { value: "Predicted FVC", label: "Predicted FVC" },
+  ];
+  const optChange = [
+    { value: "Absolute", label: "Absolute" },
+    { value: "Predicted", label: "Predicted" },
+  ];
+  const optDirection = [
+    { value: "More than", label: "More than" },
   ];
 
   return (
@@ -156,56 +218,117 @@ const RulesComponent = ({
         <div className="slectItemRule">
           <label>Endpoint</label>
           <Select
-            options={options}
+            options={optEndpoint}
+            defaultValue={optEndpoint[0]}
             onChange={(e) => {
-              console.log(e.value);
-              setCompSel({
-                ...compSel,
-                endPoint: e.value,
-              });
+              if (componentName === "Component 1") {
+                setCompSel({
+                  ...compSel,
+                  endPoint: {
+                    ...compSel.endPoint,
+                    comp1: e.value
+                  },
+                });
+              }
+              if (componentName === "Component 2") {
+                setCompSel({
+                  ...compSel,
+                  endPoint: {
+                    ...compSel.endPoint,
+                    comp2: e.value
+                  },
+                });
+              }
             }}
           />
         </div>
         <div className="slectItemRule">
           <label>Change</label>
           <Select
-            options={options}
+            options={optChange}
+            defaultValue={optChange[0]}
             onChange={(e) => {
-              setCompSel({
-                ...compSel,
-                change: e.value,
-              });
+              if (componentName === "Component 1") {
+                setCompSel({
+                  ...compSel,
+                  change: {
+                    ...compSel.change,
+                    comp1: e.value
+                  },
+                });
+              }
+              if (componentName === "Component 2") {
+                setCompSel({
+                  ...compSel,
+                  change: {
+                    ...compSel.change,
+                    comp2: e.value
+                  },
+                });
+              }
             }}
           />
         </div>
         <div className="slectItemRule">
           <label>Direction</label>
           <Select
-            options={options}
+            options={optDirection}
+            defaultValue={optDirection[0]}
             onChange={(e) => {
-              setCompSel({
-                ...compSel,
-                direction: e.value,
-              });
+              if (componentName === "Component 1") {
+                setCompSel({
+                  ...compSel,
+                  direction: {
+                    ...compSel.direction,
+                    comp1: e.value
+                  },
+                });
+              }
+              if (componentName === "Component 2") {
+                setCompSel({
+                  ...compSel,
+                  direction: {
+                    ...compSel.direction,
+                    comp2: e.value
+                  },
+                });
+              }
             }}
           />
         </div>
         <div className="amountSelDiv">
           <div
-            className="amunDiv"
-            onChange={(e) => {
-              setCompSel({
-                ...compSel,
-                amount: e.value,
-              });
-            }}
+            className="amunDiv asfas"
           >
             <label>Amount</label>
-            <Select options={options} />
+            <input
+              className="ruleNameInput ruleNameInputText"
+              type="text"
+              onChange={(e) => {
+                if (componentName === "Component 1") {
+                  setCompSel({
+                    ...compSel,
+                    amount: {
+                      ...compSel.amount,
+                      comp1: e.target.value
+                    },
+                  });
+                }
+                if (componentName === "Component 2") {
+                  setCompSel({
+                    ...compSel,
+                    amount: {
+                      ...compSel.amount,
+                      comp2: e.target.value
+                    },
+                  });
+                }
+              }}
+            ></input>
           </div>
-          <div className="">
+          <div className="asfas">
             <label>Unit</label>
-            <Select options={options} />
+            <Select />
           </div>
         </div>
       </div>
