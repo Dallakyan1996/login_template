@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PageNotFound from '../Components/PageNotFound/PageNotFound';
-import { apiServices } from './../services/API'
+import { apiServices } from '../services/API'
 import { localStorageLogin } from '../utils/constants';
 
 export const PrivateRoute = ({ children, ...restOfProps }) => {

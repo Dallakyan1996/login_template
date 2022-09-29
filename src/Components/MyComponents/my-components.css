@@ -1,0 +1,12 @@
+.my-card {
+    display: flex;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+    margin-bottom: 2rem;
+    border-radius: 25px;
+    padding-left: 14px;
+    padding-right: 14px;
+    min-width: 80%;
+    flex-direction: column;
+    min-height: 80%;
+    background-color: white;
+}

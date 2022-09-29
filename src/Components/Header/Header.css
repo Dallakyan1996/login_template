@@ -81,3 +81,33 @@
 .dropdown-menu a:hover {
   background-color: rgb(242, 244, 246);
 }
+
+.dropDownMenu {
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
+  padding: 0.3rem;
+}
+
+.dropDownMenu a {
+  display: flex;
+  align-items: center;
+  color: black;
+  padding-right: 3px !important;
+}
+
+.dropDownMenu a:hover {
+  background-color: rgba(194, 191, 191, 0.233);
+}
+
+.headerDropDown {
+  display: flex;
+  align-items: center;
+}
+
+.userNameDiv {
+  padding-right: 15px;
+  cursor: pointer;
+}
