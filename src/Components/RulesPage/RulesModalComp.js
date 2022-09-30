@@ -60,7 +60,7 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
         }
       })
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (rulesArrState.length) {
@@ -197,7 +197,6 @@ const RulesComponent = ({
   compSel,
   setCompSel,
 }) => {
-  let a = []
   const optEndpoint = [
     { value: "Predicted DLCO", label: "Predicted DLCO" },
     { value: "Predicted FEV1", label: "Predicted FEV1" },

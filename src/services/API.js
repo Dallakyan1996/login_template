@@ -73,7 +73,7 @@ function login(email, password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
     };
-    return fetch(process.env.REACT_APP_LOGIN_API, requestOptions)
+    return fetch(process.env.REACT_APP_END_POINT + "login", requestOptions)
         .then(handleResponse)
         .then(user => {
             localStorage.setItem(localStorageLogin, JSON.stringify(user));

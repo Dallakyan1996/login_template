@@ -10,12 +10,12 @@ const LoginPage = (props) => {
     if (apiServices.currentUserValue) {
       props.history.push("/");
     }
-  }, [])
+  }, [props])
 
   return (
     <>
       <div className="login_header">
-        <h2>A1AT Conditional Follow Up</h2>
+        <h2>Title</h2>
       </div>
       <div className="container">
         <div className="row d-flex justify-content-center">

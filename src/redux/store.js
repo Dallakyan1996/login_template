@@ -1,6 +1,7 @@
-import { createStore } from "redux";
-import rulesArrReducer from "../reducers/rules-reducer";
+import { createStore, combineReducers } from "redux";
+import auth from "../reducers/auth";
 
-const store = createStore(rulesArrReducer)
+const rootReducer = combineReducers({auth: auth})
+const store = createStore(rootReducer)
 
 export  default store
