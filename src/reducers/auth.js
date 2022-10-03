@@ -1,16 +1,3 @@
-import { useDispatch } from "react-redux"
-import { createBrowserHistory } from "history";
-import { getError } from "../helpers/helpers";
-
-const history = createBrowserHistory()
-const dispatch = useDispatch()
-const storageItem = window.localStorage.getItem("guest");
-let isGuest = () => {
-
-if (!storageItem) return false;
-if (storageItem === "isGuest") return  true;
-if (storageItem === "isNotGuest") return  false;
-}
 let initialState = {
     user: null,
     loading: false,
@@ -43,77 +30,6 @@ let auth = (state = initialState, action) => {
         default: return state
     }
 
-}
-
-export const action = {
-    logout() {
-        return AuthService.logout()
-            .then(() => {
-                dispatch({
-                    type: "SET-USER",
-                    payload: {
-                        user: null
-                    }
-                })
-                setGuest("isGuest");
-                if (history.location.pathname !== "login")
-                    history.location.push("/login")
-            })
-            .catch((error) => {
-                dispatch({
-                    type: "SET_ERROR",
-                    payload: {
-                        error: getError(error)
-                    }
-                })
-            });
-    },
-    async getAuthUser() {
-        dispatch({
-            type: "SET_LOADING",
-            payload: {
-                loading: true
-            }
-        })
-        try {
-            const response = await AuthService.getAuthUser();
-            dispatch({
-                type: "SET-USER",
-                payload: {
-                    user: response.data.result,
-                }
-            })
-            dispatch({
-                type: "SET_LOADING",
-                payload: {
-                    loading: false
-                }
-            })
-            return response.data.result;
-        } catch (error) {
-            dispatch({
-                type: "SET-USER",
-                payload: {
-                    user: null,
-                }
-            })
-            dispatch({
-                type: "SET_LOADING",
-                payload: {
-                    loading: false
-                }
-            })
-            dispatch({
-                type: "SET_ERROR",
-                payload: {
-                    error: getError(error)
-                }
-            })
-        }
-    },
-    setGuest(value) {
-        window.localStorage.setItem("guest", value);
-    },
 }
 
 export default auth;

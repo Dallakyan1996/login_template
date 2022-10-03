@@ -1,0 +1,64 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
+/* .sideBarIcons {
+  font-size: 2rem;
+} */
+
+.sideBarIcons {
+  display: table-cell;
+  width: 24px;
+  height: 16px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: .5rem;
+  margin-right: 1rem
+}
+
+.navLink {
+  align-items: center;
+  /* justify-content: space-around; */
+  display: flex;
+  width: 98%;
+  color: white;
+  height: 3rem;
+  padding-left: 4px;
+  font-family: arial;
+  font-size: 17px;
+  text-decoration: none;
+  transform: translateZ(0) scale(1, 1);
+  transition: all 0.1s linear;
+}
+
+.menuItemLi:hover {
+  color: #fff;
+  background: linear-gradient(#52cac6, #52c9c9, #56bced);
+}
+
+.sideBarItemsUl {
+  display: flex;
+  flex-direction: column;
+  min-height: 29rem;
+}
+
+.mainMenu {
+  padding-top: 2rem;
+  overflow: visible;
+  background: #52CAC6;
+  min-height: calc(100vh - 92px);
+  width: 12rem !important;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  border-top-right-radius: 25px;
+  margin-bottom: 0;
+  list-style: none;
+  justify-content: space-between;
+}
+
+
+.active {
+  color: #fff;
+  box-shadow: 5px 6px 30px #00000029;
+  background: linear-gradient(#52CAC6, #52C9C9, #56BCED);
+  cursor: auto;
+}

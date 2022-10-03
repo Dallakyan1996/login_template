@@ -1,9 +1,8 @@
-import "./my-components.css"
+import s from "./my-components.module.css"
 
 export const MyCard = (props) => {
-    const { customStyle } = props;
-
-    return <div className="my-card" style={customStyle}>
+    const { style } = props;
+    return <div className={s.myCard} style={style}>
         {props.children}
     </div>
 }

@@ -5,7 +5,6 @@ export const useOutsideClick = (ref, closeFn) => {
         function handleClickOutside(event) {
             if (ref.current && !ref.current.contains(event.target)) {
                 closeFn(false);
-
             }
         }
         document.addEventListener("mousedown", handleClickOutside);

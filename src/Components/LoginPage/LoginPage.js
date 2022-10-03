@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { MyCard } from "./../MyComponents/MyComponents"
 import * as Yup from "yup";
-import "./login.css";
+import s from "./login.module.css";
 import { apiServices } from "../../services/API";
 
 const LoginPage = (props) => {
@@ -14,12 +15,15 @@ const LoginPage = (props) => {
 
   return (
     <>
-      <div className="login_header">
+      <div className={s.loginHeader}>
         <h2>Title</h2>
       </div>
-      <div className="container">
-        <div className="row d-flex justify-content-center">
-          <div className="col-md-6 form_div">
+      <div className={s.loginWrapper}>
+        <div className={s.container}>
+          <MyCard style={{
+            justifyContent: "center",
+            alignItems: "center"
+          }}>
             <div>
               <Formik
                 initialValues={{
@@ -36,7 +40,7 @@ const LoginPage = (props) => {
                 ) => {
                   setStatus();
                   apiServices.login(username, password).then(
-                    (user) => {
+                    () => {
                       const { from } = props.location.state || {
                         from: { pathname: "/" },
                       };
@@ -51,61 +55,58 @@ const LoginPage = (props) => {
               >
                 {({ errors, status, touched, isSubmitting }) => (
                   <Form>
-                    <div className="form-group">
+                    <div className={s.formGroup}>
                       <label htmlFor="username">Email</label>
                       <Field
                         name="username"
                         type="text"
                         className={
-                          "form-control" +
-                          (errors.username && touched.username
-                            ? " is-invalid"
-                            : "")
+                          (errors.username && touched.username)
+                            ? s.isInvalid
+                            : s.textField
                         }
                       />
                       <ErrorMessage
                         name="username"
                         component="div"
-                        className="invalid-feedback"
+                        className={s.errorMessage}
                       />
                     </div>
-                    <div className="form-group">
+                    <div className={s.formGroup}>
                       <label htmlFor="password">Password</label>
                       <Field
                         name="password"
                         type="password"
                         autoComplete="off"
                         className={
-                          "form-control" +
-                          (errors.password && touched.password
-                            ? " is-invalid"
-                            : "")
+                          (errors.password && touched.password)
+                            ? s.isInvalid
+                            : s.textField
                         }
                       />
                       <ErrorMessage
                         name="password"
                         component="div"
-                        className="invalid-feedback"
+                        className={s.errorMessage}
                       />
                     </div>
-                    <div className="form-group submit_div">
+                    <div className={s.formGroup}>
                       <button
                         type="submit"
-                        className="btn btn-primary login_btn"
+                        className={s.button}
                         disabled={isSubmitting}
                       >
                         Log in
                       </button>
                     </div>
                     {status && (
-                      <div className={"alert alert-danger"}>Wrong Email or Password</div>
-
+                      <div className={s.alertDanger}>Wrong Email or Password</div>
                     )}
                   </Form>
                 )}
               </Formik>
             </div>
-          </div>
+          </MyCard>
         </div>
       </div>
     </>

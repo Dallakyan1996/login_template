@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { Switch, Route, useLocation, Redirect } from "react-router-dom";
-import Header from "./Components/Header/Header";
 import SideBar from "./Components/SideBar/SideBar";
+import Header from "./Components/Header/Header";
 import { LoginPage } from "./Components/LoginPage/LoginPage";
 import { localStorageLogin } from "./utils/constants";
 import { routes_arr } from "./Routes/routes_arr";
 import "./App.css";
+
 
 const App = (props) => {
   const location = useLocation();
@@ -16,7 +17,6 @@ const App = (props) => {
   }, [location.pathname]);
 
   const currentUser = JSON.parse(localStorage.getItem(localStorageLogin))
-
   return (
     <>
       <>

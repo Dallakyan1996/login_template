@@ -3,7 +3,7 @@ import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 require("highcharts/modules/exporting")(Highcharts)
 
-const Charts = (props) => {
+const Charts = () => {
     let options = {
         chart: {
             type: "pie"
@@ -14,7 +14,6 @@ const Charts = (props) => {
         xAxis: {
             categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'],
             labels: {
-                // rotation: -45,
                 style: {
                     fontSize: '13px',
                     fontFamily: 'Verdana, sans-serif'

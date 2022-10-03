@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
 }
 
 .header li {
@@ -91,14 +90,19 @@
   padding: 0.3rem;
 }
 
-.dropDownMenu a {
+.navLink {
   display: flex;
   align-items: center;
   color: black;
-  padding-right: 3px !important;
+  text-decoration: none;
+  padding: 3px;
 }
 
-.dropDownMenu a:hover {
+.navLink span {
+  padding-left: .5rem;
+}
+
+.dropDownMenu .navLink:hover {
   background-color: rgba(194, 191, 191, 0.233);
 }
 
@@ -110,4 +114,5 @@
 .userNameDiv {
   padding-right: 15px;
   cursor: pointer;
+  color: #365ab4;
 }

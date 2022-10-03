@@ -1,12 +1,12 @@
-import "./Header.css";
+
 import React, { useState, useRef } from "react";
 import { apiServices } from "../../services/API";
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { history } from './../../helpers/history';
-import './Header.css';
+import s from './header.module.css';
 import { useOutsideClick } from "../../CustomHooks/CustomHooks";
 import { getUserInfo } from "../../utils/constants";
-
+import { BiLogIn, BiLockAlt } from "react-icons/bi";
 
 const Header = () => {
   const dropDownRef = useRef(null);
@@ -20,15 +20,14 @@ const Header = () => {
 
 
   return (
-    <div className="header">
-
-      <Link to='/'>
-        <span className="testSpan">Title</span>
-      </Link>
-      <div className="headerDropDown" ref={dropDownRef} onClick={() => {
+    <div className={s.header}>
+      <NavLink className={s.navLink} to='/'>
+        <span className={s.testSpan}>Title</span>
+      </NavLink>
+      <div className={s.headerDropDown} ref={dropDownRef} onClick={() => {
         setOpenDropDown(!openDropDown)
       }}>
-        <div className="userNameDiv">{getUserInfo()?.user?.name}</div>
+        <div className={s.userNameDiv}>{getUserInfo()?.user?.name}</div>
         <a
           className="drop"
           href="/#"
@@ -39,20 +38,20 @@ const Header = () => {
           aria-expanded="false"
         >
           <img
-            className="userImg"
+            className={s.userImg}
             src="https://a1at.studymonitoring.net/img/undraw_profile.svg"
             alt="user" />
         </a>
-        {openDropDown && <div className="dropDownMenu" aria-labelledby="dropdownMenuLink">
-          <Link className="" to="/change-password">
-            <i className="fa fa-lock logoutIcon"></i>
-            Change Password
-          </Link>
-          <Link className="" to="/login"
+        {openDropDown && <div className={s.dropDownMenu} aria-labelledby="dropdownMenuLink">
+          <NavLink className={s.navLink} to="/change-password">
+            <BiLockAlt />
+            <span>Change Password</span>
+          </NavLink>
+          <NavLink className={s.navLink} to="/login"
             onClick={logout}>
-            <i className="fa fa-sign-out fa-2x logoutIcon"></i>
-            Logout
-          </Link>
+            <BiLogIn />
+            <span> Logout</span>
+          </NavLink>
         </div>}
       </div>
     </div>

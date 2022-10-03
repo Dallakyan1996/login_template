@@ -7,7 +7,6 @@
 .chartsWrapper {
     display: flex;
     justify-content: space-around;
-    /* height: 10rem; */
 }
 
 .chart1, .chart2, .chart3, .chart4, .lineChart {

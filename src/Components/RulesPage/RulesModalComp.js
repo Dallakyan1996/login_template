@@ -63,7 +63,7 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (rulesArrState.length) {
+    if (rulesArrState?.length) {
       localStorage.setItem("rules", JSON.stringify(rulesArrState));
     }
   }, [rulesArrState]);

@@ -3,14 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { localStorageLogin } from "../../utils/constants";
 import { BiTrashAlt } from "react-icons/bi";
 
-
 const RulesTable = () => {
     const dispatch = useDispatch()
     const clmnsName = new Array("RULE NAME", "DESCRIPTION", "CREATED DATE", "CREATED BY", " ")
     const userName = JSON.parse(localStorage.getItem(localStorageLogin)).user.name
     let rulesArr = useSelector(state => state.rulesArr)
 
-    if (!rulesArr.lenght) {
+    if (!rulesArr?.lenght) {
         rulesArr = JSON.parse(localStorage.getItem("rules"))
     }
     useEffect(() => {
