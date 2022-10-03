@@ -1,12 +1,11 @@
-
 import React, { useState, useRef } from "react";
 import { apiServices } from "../../services/API";
 import { NavLink } from 'react-router-dom';
 import { history } from './../../helpers/history';
-import s from './header.module.css';
 import { useOutsideClick } from "../../CustomHooks/CustomHooks";
 import { getUserInfo } from "../../utils/constants";
 import { BiLogIn, BiLockAlt } from "react-icons/bi";
+import s from './header.module.css';
 
 const Header = () => {
   const dropDownRef = useRef(null);

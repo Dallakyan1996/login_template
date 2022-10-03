@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-// import { SketchPicker } from 'react-color'
 import Select from "react-select";
 
 const customStyles = {
@@ -96,7 +95,6 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
           </div>
           <div className="ruleNameDivColor">
             <label>Rule Color</label>
-            {/* <SketchPicker /> */}
             <input
               className="ruleNameInput ruleNameInputColor"
               type="color"
@@ -134,10 +132,6 @@ const AddNewRuleModal = ({ modalIsOpen, setIsOpen }) => {
             <span>+ </span>
             AND
           </button>
-          {/* <button className="crtNewRulBtn">
-            <span>+ </span>
-            OR
-          </button> */}
         </div>
         <div className="componentWrapperRule rulesAndOrBtn submitCancelDiv">
           <button className="crtNewRulBtn cncBtn" onClick={closeModal}>

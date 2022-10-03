@@ -1,8 +1,6 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 @import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-/* .sideBarIcons {
-  font-size: 2rem;
-} */
+
 
 .sideBarIcons {
   display: table-cell;
@@ -16,7 +14,6 @@
 
 .navLink {
   align-items: center;
-  /* justify-content: space-around; */
   display: flex;
   width: 98%;
   color: white;
