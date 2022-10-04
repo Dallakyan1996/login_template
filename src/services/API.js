@@ -1,6 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
-import { history } from './../helpers/history';
-import { handleResponse } from '../helpers/hendle-response';
+import { history } from '../Helpers/history';
+import { handleResponse } from '../Helpers/hendle-response';
 import { localStorageLogin } from '../utils/constants';
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem(localStorageLogin)));

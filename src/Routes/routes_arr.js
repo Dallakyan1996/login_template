@@ -1,5 +1,5 @@
-import PageNotFound from "../Components/PageNotFound/PageNotFound";
-import RulesComponent from "../Components/RulesPage/RulesComp";
+import PageNotFound from "../Pages/PageNotFound/PageNotFound";
+import RulesComponent from "../Pages/RulesPage/RulesComp"
 
 export const routes_arr = [
     {

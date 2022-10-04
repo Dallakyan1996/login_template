@@ -1,3 +1,4 @@
+import React from "react";
 import s from "./my-components.module.css"
 
 export const MyCard = (props) => {

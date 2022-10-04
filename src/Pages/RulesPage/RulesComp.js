@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MyCard } from "../MyComponents/MyComponents";
+import { MyCard } from "../../Components/UI/UiComponents";
 import AddNewRuleModal from "./RulesModalComp";
 import RulesTable from "./RulesTable";
 import "./rules_comp.css"

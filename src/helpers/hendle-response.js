@@ -1,4 +1,4 @@
-import { apiServices } from '../services/API';
+import { apiServices } from '../services/api';
 import { history } from './history';
 
 export function handleResponse(response) {

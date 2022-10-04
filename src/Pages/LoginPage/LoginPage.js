@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { MyCard } from "./../MyComponents/MyComponents"
+import { MyCard } from "../../Components/UI/UiComponents";
 import * as Yup from "yup";
 import s from "./login.module.css";
-import { apiServices } from "../../services/API";
+import { apiServices } from "../../services/api";
 
 const LoginPage = (props) => {
 

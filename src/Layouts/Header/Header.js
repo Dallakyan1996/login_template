@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
-import { apiServices } from "../../services/API";
+import { apiServices } from "../../services/api";
 import { NavLink } from 'react-router-dom';
-import { history } from './../../helpers/history';
+import { history } from '../../Helpers/history';
 import { useOutsideClick } from "../../CustomHooks/CustomHooks";
 import { getUserInfo } from "../../utils/constants";
 import { BiLogIn, BiLockAlt } from "react-icons/bi";
