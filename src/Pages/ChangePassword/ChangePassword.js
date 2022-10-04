@@ -1,4 +1,4 @@
-import './changePassword.css';
+import './change_password.css';
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";

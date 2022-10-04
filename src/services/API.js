@@ -1,90 +1,38 @@
-import { BehaviorSubject } from 'rxjs';
-import { history } from '../Helpers/history';
-import { handleResponse } from '../Helpers/hendle-response';
-import { localStorageLogin } from '../utils/constants';
 
-const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem(localStorageLogin)));
 
-export const apiServices = {
-    login,
-    logout,
-};
 
-function GET(endPoint) {
-    if (JSON.parse(localStorage.getItem(localStorageLogin)) !== null) {
-        var acces_token = JSON.parse(localStorage.getItem(localStorageLogin)).access_token.toString()
+
+import axios from "axios";
+import store from "../Store/store";
+import AuthService from "./AuthService";
+import { localStorageLogin } from "../Utils/constants";
+
+const acces_token = JSON.parse(localStorage.getItem(localStorageLogin)).access_token.toString()
+
+export const apiClient = axios.create({
+    baseURL: process.env.REACT_APP_END_POINT + "/api",
+    headers: {
+        'Authorization': 'Bearer ' + acces_token
     }
-    else {
-        history.push('/login')
-    }
-    const requestOptions = {
-        method: "GET",
-        headers: {
-            'Authorization': 'Bearer ' + acces_token,
 
+});
+
+/*
+ * Add a response interceptor
+ */
+apiClient.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    function (error) {
+        if (
+            error.response &&
+            [401, 419].includes(error.response.status) &&
+            store.getState().auth.authUser &&
+            !store.getState().auth.guest
+        ) {
+            AuthService.logout();
         }
+        return Promise.reject(error);
     }
-    return fetch(endPoint, requestOptions)
-}
-
-
-// function getUsersList() {
-//     return GET(process.env.REACT_APP_GET_USERS_LIST).then(handleResponse)
-//         .then(res => {
-//             return res;
-//         });
-// }
-
-// function login(email, password) {
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ email, password })
-//     };
-
-//     return fetch(process.env.REACT_APP_LOGIN_API, requestOptions)
-//         .then(handleResponse)
-//         .then(user => {
-//             localStorage.setItem('toDoCurrentUser', JSON.stringify(user));
-//             currentUserSubject.next(user);
-//             return user;
-//         });
-// }
-
-// function login(email, password) {
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ email, password })
-//     };
-//     return fetch('http://laravel.test/api/login', requestOptions)
-//         .then(handleResponse)
-//         .then(user => {
-//             localStorage.setItem('toDoCurrentUser', JSON.stringify(user));
-//             currentUserSubject.next(user);
-//             return user;
-//             console.log(user)
-//         });
-// }
-
-
-function login(email, password) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-    };
-    return fetch(process.env.REACT_APP_END_POINT + "login", requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            localStorage.setItem(localStorageLogin, JSON.stringify(user));
-            currentUserSubject.next(user);
-            return user;
-        });
-}
-
-
-function logout() {
-    localStorage.removeItem(localStorageLogin);
-    currentUserSubject.next(null);
-}
+);

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import s from './page-not-found.module.css';
+import s from './page_not_found.module.css';
 
 const PageNotFound = () => (
   <div className={s.dgb}>

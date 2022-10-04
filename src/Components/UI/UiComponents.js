@@ -1,5 +1,5 @@
 import React from "react";
-import s from "./my-components.module.css"
+import s from "./my_components.module.css"
 
 export const MyCard = (props) => {
     const { style } = props;

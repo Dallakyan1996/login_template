@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { localStorageLogin } from "../../utils/constants";
+import { localStorageLogin } from "../../Utils/constants";
 import { BiTrashAlt } from "react-icons/bi";
 
 const RulesTable = () => {

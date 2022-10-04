@@ -1,16 +1,17 @@
 import React, { useState, useRef } from "react";
-import { apiServices } from "../../services/api";
+import { apiServices } from "../../Services/api";
 import { NavLink } from 'react-router-dom';
 import { history } from '../../Helpers/history';
 import { useOutsideClick } from "../../CustomHooks/CustomHooks";
-import { getUserInfo } from "../../utils/constants";
+import { getUserInfo } from "../../Utils/constants";
 import { BiLogIn, BiLockAlt } from "react-icons/bi";
 import s from './header.module.css';
+import AuthService from "../../Services/AuthService";
 
 const Header = () => {
   const dropDownRef = useRef(null);
   const logout = () => {
-    apiServices.logout();
+    AuthService.logout();
     history.push('/login');
   }
 

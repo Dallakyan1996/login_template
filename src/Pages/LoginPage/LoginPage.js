@@ -3,15 +3,9 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { MyCard } from "../../Components/UI/UiComponents";
 import * as Yup from "yup";
 import s from "./login.module.css";
-import { apiServices } from "../../services/api";
+import AuthService from "../../Services/AuthService";
 
 const LoginPage = (props) => {
-
-  useEffect(() => {
-    if (apiServices.currentUserValue) {
-      props.history.push("/");
-    }
-  }, [props])
 
   return (
     <>
@@ -39,7 +33,7 @@ const LoginPage = (props) => {
                   { setStatus, setSubmitting }
                 ) => {
                   setStatus();
-                  apiServices.login(username, password).then(
+                  AuthService.login(username, password).then(
                     () => {
                       const { from } = props.location.state || {
                         from: { pathname: "/" },

@@ -1,7 +1,7 @@
 import React, { useEffect} from "react";
 import { Switch, Route, useLocation, Redirect } from "react-router-dom";
 import { LoginPage } from "./Pages/LoginPage/LoginPage";
-import { localStorageLogin } from "./utils/constants";
+import { localStorageLogin } from "./Utils/constants";
 import { routes_arr } from "./Routes/routes_arr";
 import SideBar from "./Layouts/SideBar/SideBar";
 import Header from "./Layouts/Header/Header";
@@ -14,6 +14,7 @@ const App = (props) => {
     (document.getElementById("content") && document.getElementById("content").scrollTo(0, 0));
     window.scrollTo(0, 0)
   }, [location.pathname]);
+
 
   const currentUser = JSON.parse(localStorage.getItem(localStorageLogin))
   return (
