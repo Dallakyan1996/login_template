@@ -1,9 +1,11 @@
+import store from "../Store/store"
+
 let initialState = {
     user: null,
     loading: false,
     error: null,
 }
-
+console.log(store)
 let auth = (state = initialState, action) => {
 
     switch (action.type) {

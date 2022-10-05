@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { MyCard } from "../../Components/UI/UiComponents";
 import * as Yup from "yup";
 import s from "./login.module.css";
 import AuthService from "../../Services/AuthService";
+import { localStorageLogin } from "../../Utils/constants";
 
 const LoginPage = (props) => {
 
@@ -33,18 +34,11 @@ const LoginPage = (props) => {
                   { setStatus, setSubmitting }
                 ) => {
                   setStatus();
-                  AuthService.login(username, password).then(
-                    () => {
-                      const { from } = props.location.state || {
-                        from: { pathname: "/" },
-                      };
-                      props.history.push(from);
-                    },
-                    (error) => {
-                      setSubmitting(false);
-                      setStatus(error);
-                    }
-                  );
+                  const payload = {
+                    email: username,
+                    password: password
+                  }
+                  AuthService.login(payload)
                 }}
               >
                 {({ errors, status, touched, isSubmitting }) => (

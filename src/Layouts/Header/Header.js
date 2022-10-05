@@ -1,17 +1,20 @@
 import React, { useState, useRef } from "react";
-import { apiServices } from "../../Services/api";
 import { NavLink } from 'react-router-dom';
 import { history } from '../../Helpers/history';
 import { useOutsideClick } from "../../CustomHooks/CustomHooks";
 import { getUserInfo } from "../../Utils/constants";
 import { BiLogIn, BiLockAlt } from "react-icons/bi";
-import s from './header.module.css';
+import { localStorageLogin } from "../../Utils/constants";
 import AuthService from "../../Services/AuthService";
+import s from './header.module.css';
+import store from "../../Store/store";
 
 const Header = () => {
   const dropDownRef = useRef(null);
-  const logout = () => {
-    AuthService.logout();
+  const stateAuth = store.getState().auth
+  const logout = async () => {
+    await AuthService.logout()
+    localStorage.removeItem(localStorageLogin)
     history.push('/login');
   }
 
@@ -27,7 +30,7 @@ const Header = () => {
       <div className={s.headerDropDown} ref={dropDownRef} onClick={() => {
         setOpenDropDown(!openDropDown)
       }}>
-        <div className={s.userNameDiv}>{getUserInfo()?.user?.name}</div>
+        <div className={s.userNameDiv}>{stateAuth?.user?.name}</div>
         <a
           className="drop"
           href="/#"
