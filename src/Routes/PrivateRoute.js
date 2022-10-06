@@ -1,24 +1,22 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { authActionsType } from '../Reducers/actions-type';
 import AuthService from '../Services/AuthService';
 import store from '../Store/store';
 export const PrivateRoute = ({ children, ...restOfProps }) => {
     const dispatch = store.dispatch
-    const authState = store.getState().auth.user
-    if (!authState) {
+    const { SET_USER } = authActionsType
+    if (restOfProps.location.pathname !== "/login") {
         AuthService.getAuthUser().then(response => {
             dispatch({
-                type: "SET-USER",
-                payload: response.data.result
+                type: SET_USER,
+                payload: {
+                    user: response.data.result.user
+                }
             })
-        })
-        return (
-            <Route {...restOfProps}>{children}</Route>
-        )
+        }).catch(e => console.log(e))
     }
-    else {
-        return (
-            <Route {...restOfProps}>{children}</Route>
-        )
-    }
+    return (
+        <Route {...restOfProps}>{children}</Route>
+    )
 }

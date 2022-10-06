@@ -4,23 +4,24 @@ import { history } from '../../Helpers/history';
 import { useOutsideClick } from "../../CustomHooks/CustomHooks";
 import { getUserInfo } from "../../Utils/constants";
 import { BiLogIn, BiLockAlt } from "react-icons/bi";
-import { localStorageLogin } from "../../Utils/constants";
+import { accessToken } from "../../Utils/constants";
 import AuthService from "../../Services/AuthService";
 import s from './header.module.css';
 import store from "../../Store/store";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const dropDownRef = useRef(null);
-  const stateAuth = store.getState().auth
+  const state = useSelector(state => state)
   const logout = async () => {
     await AuthService.logout()
-    localStorage.removeItem(localStorageLogin)
+    localStorage.removeItem(accessToken)
     history.push('/login');
   }
 
   let [openDropDown, setOpenDropDown] = useState(false)
   useOutsideClick(dropDownRef, setOpenDropDown);
-
 
   return (
     <div className={s.header}>
@@ -30,7 +31,7 @@ const Header = () => {
       <div className={s.headerDropDown} ref={dropDownRef} onClick={() => {
         setOpenDropDown(!openDropDown)
       }}>
-        <div className={s.userNameDiv}>{stateAuth?.user?.name}</div>
+        <div className={s.userNameDiv}>{state?.auth?.user?.name}</div>
         <a
           className="drop"
           href="/#"

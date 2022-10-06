@@ -4,7 +4,7 @@ import { MyCard } from "../../Components/UI/UiComponents";
 import * as Yup from "yup";
 import s from "./login.module.css";
 import AuthService from "../../Services/AuthService";
-import { localStorageLogin } from "../../Utils/constants";
+import { accessToken } from "../../Utils/constants";
 
 const LoginPage = (props) => {
 

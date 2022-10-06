@@ -2,24 +2,29 @@ import axios from "axios";
 import store from "../Store/store";
 import { history } from "../Helpers/history";
 import { getError } from "../Helpers/helpers";
-import { localStorageLogin } from "../Utils/constants";
+import { accessToken } from "../Utils/constants";
+import { authActionsType } from "../Reducers/actions-type";
+import { authActionCreator } from "../Reducers/action-creator";
 
-const get_acces_token = () => {
-    return JSON.parse(localStorage.getItem(localStorageLogin))?.access_token?.toString()
+const get_access_token = () => {
+    return localStorage.getItem(accessToken)
 }
+const { SET_USER, SET_ERROR } = authActionsType
 export const authClient = axios.create({
     baseURL: process.env.REACT_APP_END_POINT + "/api",
 });
-const dispatch = store.dispatch
+const dispatch = store.dispatch;
+
 authClient.interceptors.request.use(
     config => {
-        config.headers['Authorization'] = `Bearer ${get_acces_token()}`;
+        config.headers['Authorization'] = `Bearer ${get_access_token()}`;
         return config;
     },
     error => {
         return Promise.reject(error);
     }
 );
+
 authClient.interceptors.response.use(
     (response) => {
         return response;
@@ -42,45 +47,47 @@ export default {
         authClient.post("/login", payload).then(
             (response) => {
                 const result = response.data.result
-                commit("SET-USER", {
-                    user: result
-                })
-                localStorage.setItem(localStorageLogin, JSON.stringify(response.data.result))
+                dispatch(
+                    authActionCreator(SET_USER, {
+                        user: result
+                    }))
+                localStorage.setItem(accessToken, response.data.result.access_token)
                 history?.push("/")
             },
             (error) => {
-                commit("SET-ERROR", {
-                    error: getError(error)
-                })
+                dispatch(
+                    authActionCreator(SET_ERROR, {
+                        error: getError(error)
+                    }))
             }
-        );
+        )
     },
     logout() {
-        authClient.post("/logout",)
+        authClient.post("/logout")
             .then(() => {
-                commit("SET-USER", {
-                    user: null
-                })
+                dispatch(
+                    authActionCreator(SET_USER, {
+                        user: null
+                    }))
                 this.setGuest("isGuest");
                 if (history?.location?.pathname !== "login")
                     history?.push("/login")
 
             })
             .catch((error) => {
-                commit("SET-ERROR", {
-                    error: getError(error)
-                })
-            });
-
+                dispatch(
+                    authActionCreator(SET_ERROR, {
+                        error: getError(error)
+                    }))
+            })
     },
+
     async forgotPassword(payload) {
         return authClient.post("/forgot-password", payload);
     },
     getAuthUser() {
         return authClient.get("/users/auth");
-     
     },
-
     async resetPassword(payload) {
         return authClient.post("/reset-password", payload);
     },
@@ -95,14 +102,6 @@ export default {
     },
     setGuest(value) {
         window.localStorage.setItem("guest", value);
-    },
+    }
 };
 
-
-const commit = (type, payload) => {
-    dispatch({
-        type: type,
-        payload: payload
-    })
-
-}

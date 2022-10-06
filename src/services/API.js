@@ -1,9 +1,9 @@
 import axios from "axios";
 import store from "../Store/store";
 import AuthService from "./AuthService";
-import { localStorageLogin } from "../Utils/constants";
+import { accessToken } from "../Utils/constants";
 
-const acces_token = JSON.parse(localStorage.getItem(localStorageLogin)).access_token.toString()
+const acces_token = JSON.parse(localStorage.getItem(accessToken)).access_token.toString()
 
 export const apiClient = axios.create({
     baseURL: process.env.REACT_APP_END_POINT + "/api",

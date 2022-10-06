@@ -1,14 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { localStorageLogin } from "../../Utils/constants";
+import { accessToken } from "../../Utils/constants";
 import { BiTrashAlt } from "react-icons/bi";
 
 const RulesTable = (props) => {
-        const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const clmnsName = new Array("RULE NAME", "DESCRIPTION", "CREATED DATE", "CREATED BY", " ")
-    const userName = JSON.parse(localStorage.getItem(localStorageLogin))?.user?.name
+    const userName = useSelector(state => state?.auth?.user?.name)
     let rulesArr = useSelector(state => state.rulesArr)
-
     if (!rulesArr?.lenght) {
         rulesArr = JSON.parse(localStorage.getItem("rules"))
     }
@@ -31,7 +30,6 @@ const RulesTable = (props) => {
                 </div>
             })}
         </div>
-
         {rulesArr?.length ? rulesArr.map((item, index) => {
             return <div key={index} className="tableWrapperRul" >
                 <div style={{ color: item.ruleColor }}> {item.ruleName}</div>

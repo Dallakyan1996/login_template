@@ -1,4 +1,4 @@
-export const localStorageLogin = "doacUser"
+export const accessToken = "doacUserToken"
 export const getUserInfo = () => {
-    return JSON.parse(localStorage.getItem(localStorageLogin))
+    return JSON.parse(localStorage.getItem(accessToken))
 }
