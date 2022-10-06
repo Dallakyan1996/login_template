@@ -1,10 +1,10 @@
-import * as API from "./api";
+import {apiClient} from "./API";
 
 export default {
   getUser(userId) {
-    return API.apiClient.get(`/users/${userId}`);
+    return apiClient.get(`/users/${userId}`);
   },
   getUsers() {
-    return API.apiClient.get(`/users`);
+    return apiClient.get(`/users`);
   },
 };

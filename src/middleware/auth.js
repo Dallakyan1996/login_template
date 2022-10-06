@@ -1,6 +1,7 @@
+import { useSelector } from "react-redux";
 import AuthService from "../Services/AuthService";
-import store from "./../Store/store"
-const state = store.getState()
+
+const state = useSelector(state=>state)
 
 export default function auth({ to, next, store }) {
   // const loginQuery = { path: "/login", query: { redirect: to.fullPath } };

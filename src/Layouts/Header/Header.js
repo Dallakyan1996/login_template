@@ -1,14 +1,11 @@
 import React, { useState, useRef } from "react";
 import { NavLink } from 'react-router-dom';
-import { history } from '../../Helpers/history';
+import { history } from '../../Helpers/helpers';
 import { useOutsideClick } from "../../CustomHooks/CustomHooks";
-import { getUserInfo } from "../../Utils/constants";
 import { BiLogIn, BiLockAlt } from "react-icons/bi";
 import { accessToken } from "../../Utils/constants";
 import AuthService from "../../Services/AuthService";
 import s from './header.module.css';
-import store from "../../Store/store";
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -17,7 +14,8 @@ const Header = () => {
   const logout = async () => {
     await AuthService.logout()
     localStorage.removeItem(accessToken)
-    history.push('/login');
+    history?.push("/login")
+
   }
 
   let [openDropDown, setOpenDropDown] = useState(false)

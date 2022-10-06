@@ -1,3 +1,4 @@
+import { createBrowserHistory } from 'history';
 export const getError = (error) => {
     const errorMessage = "API Error, please try again.";
     if (error.name === "Fetch User") {
@@ -19,3 +20,6 @@ export const getError = (error) => {
 
     return errorMessage;
 };
+
+
+export const history = createBrowserHistory();

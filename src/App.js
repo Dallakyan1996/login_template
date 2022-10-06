@@ -7,6 +7,7 @@ import { LoginPage } from "./Pages/LoginPage/LoginPage";
 import SideBar from "./Layouts/SideBar/SideBar";
 import Header from "./Layouts/Header/Header";
 import "./App.css";
+import { useSelector } from "react-redux";
 
 
 const App = (props) => {
@@ -17,6 +18,8 @@ const App = (props) => {
   }, [location.pathname]);
 
   const currentUser = localStorage.getItem(accessToken)
+
+  // console.log(state)
 
   return (
     <>

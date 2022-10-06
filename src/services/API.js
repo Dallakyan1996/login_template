@@ -1,17 +1,16 @@
 import axios from "axios";
-import store from "../Store/store";
 import AuthService from "./AuthService";
-import { accessToken } from "../Utils/constants";
+import {getToken } from "../Utils/constants";
+import store from "../Store/store";
 
-const acces_token = JSON.parse(localStorage.getItem(accessToken)).access_token.toString()
-
+const access_token = getToken()?.access_token
+const state = store.getState()
 export const apiClient = axios.create({
     baseURL: process.env.REACT_APP_END_POINT + "/api",
 });
-
-authClient.interceptors.request.use(
+apiClient.interceptors.request.use(
     config => {
-        config.headers['Authorization'] = `Bearer ${acces_token}`;
+        config.headers['Authorization'] = `Bearer ${access_token}`;
         return config;
     },
     error => {
@@ -21,14 +20,13 @@ authClient.interceptors.request.use(
 
 apiClient.interceptors.response.use(
     function (response) {
-    return response;
-},
+        return response;
+    },
     function (error) {
         if (
             error.response &&
             [401, 419].includes(error.response.status) &&
-            store.getState().auth.authUser &&
-            !store.getState().auth.guest
+            state.auth.authUser
         ) {
             AuthService.logout();
         }
