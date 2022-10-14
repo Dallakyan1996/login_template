@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { MyCard } from "../../Components/UI/UiComponents";
+import { MyCard, MyInput } from "../../Components/UI/UiComponents";
 import * as Yup from "yup";
 import s from "./login.module.css";
 import AuthService from "../../Services/AuthService";
@@ -81,7 +81,7 @@ const LoginPage = (props) => {
                       <button
                         type="submit"
                         className={s.button}
-                        disabled={isSubmitting}
+                      // disabled={isSubmitting}
                       >
                         Log in
                       </button>
@@ -89,6 +89,7 @@ const LoginPage = (props) => {
                     {status && (
                       <div className={s.alertDanger}>Wrong Email or Password</div>
                     )}
+                    {/* <MyInput label="password" type="password" changeInput={(e)=>console.log(e)}></MyInput> */}
                   </Form>
                 )}
               </Formik>

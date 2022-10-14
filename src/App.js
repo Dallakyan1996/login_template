@@ -7,16 +7,18 @@ import { LoginPage } from "./Pages/LoginPage/LoginPage";
 import SideBar from "./Layouts/SideBar/SideBar";
 import Header from "./Layouts/Header/Header";
 import "./App.css";
+import { useSelector } from "react-redux";
+import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
 const App = (props) => {
   const location = useLocation();
   const currentUser = localStorage.getItem(accessToken);
-
+  const changePasswordIsOpen = useSelector(state => state.changePassword.changePassIsOpen);
+  
   useEffect(() => {
-    (document.getElementById("content") && document.getElementById("content").scrollTo(0, 0));
-    window.scrollTo(0, 0)
+    document.getElementById("content") && document.getElementById("content").scrollTo(0, 0);
+    window.scrollTo(0, 0);
   }, [location.pathname]);
-
 
   return (
     <>
@@ -37,6 +39,9 @@ const App = (props) => {
               </Switch>
             </div>
           </div>
+          {
+            changePasswordIsOpen ? <ChangePassword /> : null
+          }
         </div> : <Redirect to="/login" />}
       <Route exact path="/login" component={LoginPage} />
     </>

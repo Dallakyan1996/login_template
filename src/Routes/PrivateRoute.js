@@ -8,9 +8,9 @@ import AuthService from '../Services/AuthService';
 import store from '../Store/store';
 
 export const PrivateRoute = ({ children, ...restOfProps }) => {
-    const authUser = useSelector(state => state.auth.user)
-    const dispatch = store.dispatch
-    const { SET_USER } = authActionsType
+    const authUser = useSelector(state => state.auth.user);
+    const dispatch = store.dispatch;
+    const { SET_USER } = authActionsType;
     if (restOfProps.location.pathname !== "/login" && !authUser) {
         AuthService.getAuthUser().then(response => {
             dispatch({

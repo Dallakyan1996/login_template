@@ -5,12 +5,15 @@ import { useOutsideClick } from "../../CustomHooks/CustomHooks";
 import { BiLogIn, BiLockAlt } from "react-icons/bi";
 import { accessToken } from "../../Utils/constants";
 import AuthService from "../../Services/AuthService";
+import { changePassActionsType } from "../../Reducers/actions-type";
 import s from './header.module.css';
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
   const dropDownRef = useRef(null);
   const state = useSelector(state => state)
+  const dispatch = useDispatch();
+  const { CHANGE_PASSWORD_OPEN } = changePassActionsType
   const logout = async () => {
     await AuthService.logout()
     localStorage.removeItem(accessToken)
@@ -45,10 +48,16 @@ const Header = () => {
             alt="user" />
         </a>
         {openDropDown && <div className={s.dropDownMenu} aria-labelledby="dropdownMenuLink">
-          <NavLink className={s.navLink} to="/change-password">
+          <div className={s.navLink} style={{
+            cursor: "pointer"
+          }} onClick={() => {
+            dispatch({
+              type: CHANGE_PASSWORD_OPEN
+            })
+          }}>
             <BiLockAlt />
             <span>Change Password</span>
-          </NavLink>
+          </div>
           <NavLink className={s.navLink} to="/login"
             onClick={logout}>
             <BiLogIn />

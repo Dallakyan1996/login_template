@@ -5,10 +5,10 @@ import { authActionsType } from "../Reducers/actions-type";
 import { authActionCreator } from "../Reducers/action-creator";
 import { apiClient } from "./API";
 
-const { SET_USER, SET_ERROR } = authActionsType
+const { SET_USER, SET_ERROR } = authActionsType;
 const dispatch = store.dispatch;
 
-export default {
+const AuthService =  {
     async login(payload) {
         apiClient.post("/login", payload).then(
             (response) => {
@@ -17,7 +17,6 @@ export default {
                 const tokenParams = {
                     expires_in: result.expires_in,
                     access_token: result.access_token
-                    
                 }
                 dispatch(
                     authActionCreator(SET_USER, {
@@ -37,7 +36,6 @@ export default {
     logout() {
         apiClient.post("/logout")
             .then(() => {
-       
                 dispatch(
                     authActionCreator(SET_USER, {
                         user: null
@@ -61,14 +59,14 @@ export default {
         return apiClient.post("/reset-password", payload);
     },
     updatePassword(payload) {
-        return apiClient.put("/user/password", payload);
+        return apiClient.post("/change-password", payload);
     },
     sendVerification(payload) {
         return apiClient.post("/email/verification-notification", payload);
     },
     updateUser(payload) {
         return apiClient.put("/user/profile-information", payload);
-    },
-
+    }
 };
 
+export default AuthService;
