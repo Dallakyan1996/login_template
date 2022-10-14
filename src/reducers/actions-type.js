@@ -6,5 +6,6 @@ export const authActionsType = {
     GET_LOGGED_IN: "GET-LOGGED-IN",
 }
 export const changePassActionsType = {
-    CHANGE_PASSWORD_OPEN: "CHANGE-PASS-OPEN"
+    CHANGE_PASSWORD_OPEN: "CHANGE-PASS-OPEN",
+    CHANGE_PASSWORD_CLOSE: "CHANGE-PASS-CLOSE"
 }

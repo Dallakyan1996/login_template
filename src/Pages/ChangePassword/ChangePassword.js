@@ -1,29 +1,39 @@
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import * as Yup from "yup";
 import { MyModal } from '../../Components/UI/UiComponents';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changePassActionsType } from '../../Reducers/actions-type';
 import { BiLockAlt } from "react-icons/bi";
 import AuthService from '../../Services/AuthService';
 import s from "./change_password.module.css"
+import { useOutsideClick } from "../../CustomHooks/CustomHooks";
 
 const ChangePassword = () => {
-
+    const modalRef = useRef(null);
     const [successText, setSuccessText] = useState("")
     const [errorText, setErrorText] = useState("")
-    const { CHANGE_PASSWORD_OPEN } = changePassActionsType
+    const { CHANGE_PASSWORD_CLOSE } = changePassActionsType
+    const changePasswordOpen = useSelector(state => state.changePassword.changePassIsOpen)
     const dispatch = useDispatch()
-
+    const closeChangePassword = (open) => {
+        if (changePasswordOpen) {
+            dispatch({
+                type: CHANGE_PASSWORD_CLOSE,
+                payload: {
+                    open: open
+                }
+            })
+        }
+    }
+    useOutsideClick(modalRef, closeChangePassword);
     return <>
         <MyModal modalHeader="Change Password"
             headerIcon={<BiLockAlt />}
             onClose={() => {
-                dispatch({
-                    type: CHANGE_PASSWORD_OPEN
-                })
+                closeChangePassword(false)
             }} >
-            <div className="">
+            <div ref={modalRef} className="">
                 <div className=''>
                     <div className=''>
                         <Formik
@@ -76,9 +86,9 @@ const ChangePassword = () => {
                                             placeholder="Old Password"
                                             className={
                                                 (errors.password && touched.password)
-                                                  ? s.isInvalid
-                                                  : s.textField
-                                              }
+                                                    ? s.isInvalid
+                                                    : s.textField
+                                            }
                                         />
                                         <ErrorMessage
                                             name="oldPassword"
@@ -95,9 +105,9 @@ const ChangePassword = () => {
                                             autoComplete="off"
                                             className={
                                                 (errors.password && touched.password)
-                                                  ? s.isInvalid
-                                                  : s.textField
-                                              }
+                                                    ? s.isInvalid
+                                                    : s.textField
+                                            }
                                         />
                                         <ErrorMessage
                                             name="newPassword"
@@ -114,9 +124,9 @@ const ChangePassword = () => {
                                             autoComplete="off"
                                             className={
                                                 (errors.password && touched.password)
-                                                  ? s.isInvalid
-                                                  : s.textField
-                                              }
+                                                    ? s.isInvalid
+                                                    : s.textField
+                                            }
                                         />
                                         <ErrorMessage
                                             name="confirmPassword"
