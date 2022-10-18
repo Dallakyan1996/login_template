@@ -8,6 +8,7 @@ import { BiLockAlt } from "react-icons/bi";
 import AuthService from '../../Services/AuthService';
 import s from "./change_password.module.css"
 import { useOutsideClick } from "../../CustomHooks/CustomHooks";
+import { MyButton } from "../../Components/UI/UiComponents";
 
 const ChangePassword = () => {
     const modalRef = useRef(null);
@@ -29,139 +30,128 @@ const ChangePassword = () => {
     useOutsideClick(modalRef, closeChangePassword);
     return <>
         <MyModal modalHeader="Change Password"
-            headerIcon={<BiLockAlt />}
+            headerIcon={<div className={s.iconWrapper}><BiLockAlt /></div>}
             onClose={() => {
                 closeChangePassword(false)
             }} >
-            <div ref={modalRef} className="">
-                <div className=''>
-                    <div className=''>
-                        <Formik
-                            initialValues={{
-                                oldPassword: "",
-                                newPassword: "",
-                                confirmPassword: ""
-                            }}
-                            validationSchema={Yup.object().shape({
-                                oldPassword: Yup.string().required("Old Password field is required"),
-                                newPassword: Yup.string().required("New Password field is required"),
-                                confirmPassword: Yup.string().required("Confirm Password field is required"),
-                            })}
-                            onSubmit={(
-                                { oldPassword, newPassword, confirmPassword },
-                                { setStatus, setSubmitting }
-                            ) => {
-                                setStatus();
-                                let payload = {
-                                    old_password: oldPassword,
-                                    new_password: newPassword,
-                                    confirm_new_password: confirmPassword
+            <div ref={modalRef}>
+                <Formik
+                    initialValues={{
+                        oldPassword: "",
+                        newPassword: "",
+                        confirmPassword: ""
+                    }}
+                    validationSchema={Yup.object().shape({
+                        oldPassword: Yup.string().required("Old Password field is required"),
+                        newPassword: Yup.string().required("New Password field is required"),
+                        confirmPassword: Yup.string().required("Confirm Password field is required"),
+                    })}
+                    onSubmit={(
+                        { oldPassword, newPassword, confirmPassword },
+                        { setStatus, setSubmitting }
+                    ) => {
+                        setStatus();
+                        let payload = {
+                            old_password: oldPassword,
+                            new_password: newPassword,
+                            confirm_new_password: confirmPassword
+                        }
+                        AuthService.updatePassword(payload).then(
+                            (res) => {
+                                if (res.success) {
+                                    setSuccessText(res.success)
                                 }
-                                AuthService.updatePassword(payload).then(
-                                    (res) => {
-                                        if (res.success) {
-                                            setSuccessText(res.success)
-                                        }
-                                        else {
-                                            try {
-                                                setErrorText(Object.values(Object.values(res)[1])[0][0])
-                                            }
-                                            catch {
-                                                setErrorText("Old Password is incorrect")
-                                            }
-                                        }
-                                        setSubmitting(false)
-                                    },
-                                )
-                            }}
-                        >
-                            {({ errors, status, touched, isSubmitting, onChange }) => (
-                                <Form>
-                                    <div className={s.formGroup}>
-                                        <label htmlFor="oldPassword">Old Password</label>
-                                        <Field
-                                            id="oldPassword"
-                                            name="oldPassword"
-                                            type="password"
-                                            placeholder="Old Password"
-                                            className={
-                                                (errors.password && touched.password)
-                                                    ? s.isInvalid
-                                                    : s.textField
-                                            }
-                                        />
-                                        <ErrorMessage
-                                            name="oldPassword"
-                                            component="div"
-                                            className={s.errorMessage}
-                                        />
-                                    </div>
-                                    <div className={s.formGroup}>
-                                        <label htmlFor="newPassword">New Password</label>
-                                        <Field
-                                            name="newPassword"
-                                            type="password"
-                                            placeholder="New Password"
-                                            autoComplete="off"
-                                            className={
-                                                (errors.password && touched.password)
-                                                    ? s.isInvalid
-                                                    : s.textField
-                                            }
-                                        />
-                                        <ErrorMessage
-                                            name="newPassword"
-                                            component="div"
-                                            className={s.errorMessage}
-                                        />
-                                    </div>
-                                    <div className={s.formGroup}>
-                                        <label htmlFor="confirmPassword">Confirm Password</label>
-                                        <Field
-                                            name="confirmPassword"
-                                            type="password"
-                                            placeholder="Confirm Password"
-                                            autoComplete="off"
-                                            className={
-                                                (errors.password && touched.password)
-                                                    ? s.isInvalid
-                                                    : s.textField
-                                            }
-                                        />
-                                        <ErrorMessage
-                                            name="confirmPassword"
-                                            component="div"
-                                            className={s.errorMessage}
-                                        />
-                                    </div>
-                                    <div className="form-group submit_div">
-                                        <button
-                                            type="submit"
-                                            className={s.button}
-                                            // disabled={isSubmitting}
-                                            onClick={() => {
-                                                setSuccessText("")
-                                                setErrorText("")
-                                            }}
-                                        >
-                                            Update
-                                        </button>
-                                    </div>
-                                    {errorText && (
-                                        <div className={"alert alert-danger"}>{errorText}</div>
+                                else {
+                                    try {
+                                        setErrorText(Object.values(Object.values(res)[1])[0][0])
+                                    }
+                                    catch {
+                                        setErrorText("Old Password is incorrect")
+                                    }
+                                }
+                                setSubmitting(false)
+                            }
+                        )
+                    }}
+                >
+                    {({ errors, status, touched, isSubmitting, onChange }) => (
+                        <Form>
+                            <div className={s.formGroup}>
+                                <label htmlFor="oldPassword">Old Password</label>
+                                <Field
+                                    id="oldPassword"
+                                    name="oldPassword"
+                                    type="password"
+                                    placeholder="Old Password"
+                                    className={
+                                        (errors.oldPassword && touched.oldPassword)
+                                            ? s.isInvalid
+                                            : s.textField
+                                    }
+                                />
+                                <ErrorMessage
+                                    name="oldPassword"
+                                    component="div"
+                                    className={s.errorMessage}
+                                />
+                            </div>
+                            <div className={s.formGroup}>
+                                <label htmlFor="newPassword">New Password</label>
+                                <Field
+                                    name="newPassword"
+                                    type="password"
+                                    placeholder="New Password"
+                                    autoComplete="off"
+                                    className={
+                                        (errors.newPassword && touched.newPassword)
+                                            ? s.isInvalid
+                                            : s.textField
+                                    }
+                                />
+                                <ErrorMessage
+                                    name="newPassword"
+                                    component="div"
+                                    className={s.errorMessage}
+                                />
+                            </div>
+                            <div className={s.formGroup}>
+                                <label htmlFor="confirmPassword">Confirm Password</label>
+                                <Field
+                                    name="confirmPassword"
+                                    type="password"
+                                    placeholder="Confirm Password"
+                                    autoComplete="off"
+                                    className={
+                                        (errors.confirmPassword && touched.confirmPassword)
+                                            ? s.isInvalid
+                                            : s.textField
+                                    }
+                                />
+                                <ErrorMessage
+                                    name="confirmPassword"
+                                    component="div"
+                                    className={s.errorMessage}
+                                />
+                            </div>
+                            <div className={s.btnWrapper}>
+                                <MyButton type="submit"
+                                    onClickFn={function () {
+                                        setSuccessText("")
+                                        setErrorText("")
+                                    }}>UPDATE</MyButton>
+                            </div>
+                            {errorText && (
+                                <div className={"alert alert-danger"}>{errorText}</div>
 
-                                    )}
-                                    {successText && (
-                                        <div className={"alert alert-success"}>{successText}</div>
-                                    )}
-                                </Form>
                             )}
-                        </Formik>
-                    </div>
-                </div>
+                            {successText && (
+                                <div className={"alert alert-success"}>{successText}</div>
+                            )}
+                        </Form>
+                    )}
+                </Formik>
             </div>
         </MyModal>
-
     </>
 }
 

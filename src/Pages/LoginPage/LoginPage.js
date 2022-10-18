@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import { MyCard, MyInput } from "../../Components/UI/UiComponents";
+import { MyButton, MyCard } from "../../Components/UI/UiComponents";
 import * as Yup from "yup";
 import s from "./login.module.css";
 import AuthService from "../../Services/AuthService";
@@ -14,7 +14,7 @@ const LoginPage = (props) => {
       </div>
       <div className={s.loginWrapper}>
         <div className={s.container}>
-          <MyCard style={{
+          <MyCard customStyle={{
             justifyContent: "center",
             alignItems: "center"
           }}>
@@ -78,18 +78,27 @@ const LoginPage = (props) => {
                       />
                     </div>
                     <div className={s.formGroup}>
-                      <button
+                      <MyButton
+                        type="submit"
+                        customStyle={{
+                          fontSize: "18px",
+                          padding: "0.4rem 0.2rem",
+                          backgroundColor: "#52CAC6",
+                          width: "7rem"
+                        }
+                        }
+                      >Log in</MyButton>
+                      {/* <button
                         type="submit"
                         className={s.button}
                       // disabled={isSubmitting}
                       >
                         Log in
-                      </button>
+                      </button> */}
                     </div>
                     {status && (
                       <div className={s.alertDanger}>Wrong Email or Password</div>
                     )}
-                    {/* <MyInput label="password" type="password" changeInput={(e)=>console.log(e)}></MyInput> */}
                   </Form>
                 )}
               </Formik>

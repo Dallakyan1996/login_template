@@ -47,11 +47,11 @@ const LineChart = (props) => {
             name: 'John',
             colorByPoint: true,
             data: [
-                ["A", props.a],
-                ["B", props.b],
-                ["C", props.b + 100 * Math.random()],
-                ["D", props.b - 230 * Math.random()],
-                ["E", props.b / Math.random()]
+                ["A", 10],
+                ["B", 111],
+                ["C", 15 + 100 * Math.random()],
+                ["D", 20 - 230 * Math.random()],
+                ["E",10/ Math.random()]
             ]
         }]
     }

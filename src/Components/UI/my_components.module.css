@@ -47,7 +47,31 @@
 .modal_header_text {
     width: 100%;
     display: flex;
-    padding: 0rem;
+    padding: 1rem;
     align-items: center;
     justify-content: space-around;
+}
+
+.my_button {
+    padding: .5rem 1rem .5rem 1rem;
+    background-color: #3254a7;
+    color: white;
+    border-radius: 15px;
+    border: none;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.my_button:focus {
+    outline: none;
+}
+
+.my_hr {
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+    width: 18rem;
 }

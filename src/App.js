@@ -14,7 +14,7 @@ const App = (props) => {
   const location = useLocation();
   const currentUser = localStorage.getItem(accessToken);
   const changePasswordIsOpen = useSelector(state => state.changePassword.changePassIsOpen);
-  
+
   useEffect(() => {
     document.getElementById("content") && document.getElementById("content").scrollTo(0, 0);
     window.scrollTo(0, 0);
@@ -39,9 +39,7 @@ const App = (props) => {
               </Switch>
             </div>
           </div>
-          {
-            changePasswordIsOpen ? <ChangePassword /> : null
-          }
+          {changePasswordIsOpen ? <ChangePassword /> : null}
         </div> : <Redirect to="/login" />}
       <Route exact path="/login" component={LoginPage} />
     </>

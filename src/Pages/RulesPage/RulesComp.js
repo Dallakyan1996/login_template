@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MyCard } from "../../Components/UI/UiComponents";
+import { MyButton, MyCard } from "../../Components/UI/UiComponents";
 import AddNewRuleModal from "./RulesModalComp";
 import RulesTable from "./RulesTable";
 import "./rules_comp.css"
@@ -13,7 +13,13 @@ const RulesComponent = () => {
     return <MyCard>
         <div className="crtRulBtnWrp">
             <span>Monitoring Rules</span>
-            <button className="crtNewRulBtn" onClick={openModal}>Create New Rule</button>
+            <MyButton onClickFn={function () {
+                openModal()
+            }}
+                customStyle={{
+                    background: "linear-gradient(#3CE6BF, #56BCED)"
+                }}
+            >Create New Rule</MyButton>
         </div>
         <AddNewRuleModal openModal={openModal} modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} />
         <RulesTable />

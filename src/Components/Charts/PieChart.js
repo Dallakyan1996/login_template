@@ -3,7 +3,7 @@ import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 require("highcharts/modules/exporting")(Highcharts)
 
-const Charts = () => {
+const PieChart = () => {
     let options = {
         chart: {
             type: "pie"
@@ -62,4 +62,4 @@ const Charts = () => {
     </>
 }
 
-export default Charts;
+export default PieChart;

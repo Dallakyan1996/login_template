@@ -11,5 +11,10 @@ export const side_bar_arr = [
         name: "Summary",
         icon: <FaChartLine className={s.sideBarIcons}/>,
         route: "/line"
+    },
+    {
+        name: "Charts",
+        icon: <FaChartLine className={s.sideBarIcons}/>,
+        route: "/charts"
     }
 ]

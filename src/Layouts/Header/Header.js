@@ -18,7 +18,6 @@ const Header = () => {
     await AuthService.logout()
     localStorage.removeItem(accessToken)
     history?.push("/login")
-
   }
 
   let [openDropDown, setOpenDropDown] = useState(false)
