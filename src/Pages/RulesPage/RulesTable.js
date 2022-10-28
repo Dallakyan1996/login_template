@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { accessToken } from "../../Utils/constants";
 import { BiTrashAlt } from "react-icons/bi";
 
-const RulesTable = (props) => {
+const RulesTable = () => {
     const dispatch = useDispatch()
     const clmnsName = new Array("RULE NAME", "DESCRIPTION", "CREATED DATE", "CREATED BY", " ")
     const userName = useSelector(state => state?.auth?.user?.name)

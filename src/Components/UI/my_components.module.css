@@ -69,9 +69,51 @@
 .my_hr {
     margin-bottom: 1rem;
     border: 0;
-    border-top: 1px solid rgba(0,0,0,.1);
+    border-top: 1px solid rgba(0, 0, 0, .1);
     box-sizing: content-box;
     height: 0;
     overflow: visible;
     width: 18rem;
+}
+
+.my_input_wrapper {
+    position: relative;
+}
+
+
+.my_input {
+    padding: 0.8rem;
+    border-radius: 11px;
+    border-top: 2px solid #cacad39a;
+    border-left: 2px solid #cacad39a;
+    border-bottom: 2px solid rgb(253, 251, 251);
+    border-right: 2px solid rgb(253, 251, 251);
+    padding-left: 32px;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #f0f1f5 inset !important;
+}
+
+.my_input:focus {
+    outline: none;
+}
+
+.inp_icon_div {
+    position: absolute;
+    top: 59%;
+    left: 5px;
+    border-right: 1px solid #ccc;
+    padding-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.3rem;
+}
+
+.my_input_label {
+    font-size: 15px;
+    padding-bottom: 0.7rem;
 }

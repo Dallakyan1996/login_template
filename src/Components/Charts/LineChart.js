@@ -1,13 +1,14 @@
 import React from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
-import "./line-chart.css"
+import "./line-chart.module.css"
 require("highcharts/modules/exporting")(Highcharts)
 
 const LineChart = (props) => {
     let options = {
         chart: {
-            type: "spline"
+            type: "spline",
+            zoomType:"xy"
         },
         title: {
             text: 'Line Title'
@@ -51,7 +52,7 @@ const LineChart = (props) => {
                 ["B", 111],
                 ["C", 15 + 100 * Math.random()],
                 ["D", 20 - 230 * Math.random()],
-                ["E",10/ Math.random()]
+                ["E", 10 / Math.random()]
             ]
         }]
     }

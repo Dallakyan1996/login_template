@@ -88,6 +88,7 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 0 3px 6px rgb(0 0 0 / 16%);
   padding: 0.3rem;
+  z-index: 100000;
 }
 
 .navLink {

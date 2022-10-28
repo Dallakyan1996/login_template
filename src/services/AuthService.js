@@ -9,8 +9,9 @@ const { SET_USER, SET_ERROR } = authActionsType;
 const dispatch = store.dispatch;
 
 const AuthService =  {
+    
     async login(payload) {
-        apiClient.post("/login", payload).then(
+       return  apiClient.post("/login", payload).then(
             (response) => {
                 const result = response.data.result
                 const user = result.user

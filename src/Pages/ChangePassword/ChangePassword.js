@@ -34,7 +34,9 @@ const ChangePassword = () => {
             onClose={() => {
                 closeChangePassword(false)
             }} >
-            <div ref={modalRef}>
+            <div
+            // ref={modalRef}
+            >
                 <Formik
                     initialValues={{
                         oldPassword: "",
@@ -135,6 +137,9 @@ const ChangePassword = () => {
                             </div>
                             <div className={s.btnWrapper}>
                                 <MyButton type="submit"
+                                    customStyle={{
+                                        background: "linear-gradient(rgb(60, 230, 191), rgb(86, 188, 237))"
+                                    }}
                                     onClickFn={function () {
                                         setSuccessText("")
                                         setErrorText("")

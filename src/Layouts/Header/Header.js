@@ -47,13 +47,15 @@ const Header = () => {
             alt="user" />
         </a>
         {openDropDown && <div className={s.dropDownMenu} aria-labelledby="dropdownMenuLink">
-          <div className={s.navLink} style={{
-            cursor: "pointer"
-          }} onClick={() => {
-            dispatch({
-              type: CHANGE_PASSWORD_OPEN
-            })
-          }}>
+          <div className={s.navLink}
+            style={{
+              cursor: "pointer"
+            }}
+            onClick={() => {
+              dispatch({
+                type: CHANGE_PASSWORD_OPEN
+              })
+            }}>
             <BiLockAlt />
             <span>Change Password</span>
           </div>

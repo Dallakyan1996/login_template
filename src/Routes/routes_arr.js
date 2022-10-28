@@ -24,7 +24,7 @@ export const routes_arr = [
     {
         path: "/charts",
         exact: true,
-        component: <ParallerChart />
+        component: <ParallerChart/>
     },
     {
         path: null,

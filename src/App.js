@@ -6,9 +6,9 @@ import { routes_arr } from "./Routes/routes_arr";
 import { LoginPage } from "./Pages/LoginPage/LoginPage";
 import SideBar from "./Layouts/SideBar/SideBar";
 import Header from "./Layouts/Header/Header";
-import "./App.css";
 import { useSelector } from "react-redux";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+import "./App.css";
 
 const App = (props) => {
   const location = useLocation();

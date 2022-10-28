@@ -28,20 +28,27 @@ export const MyModal = (props) => {
 }
 
 export const MyInput = (props) => {
-    const { customStyle, type, value, changeInput, label } = props
-    return <div>
-        {label && <label>{label}</label>}
-        <input style={customStyle} type={type} onChange={(e) => changeInput(e.target.value)}></input>
+    const { customStyle, type, onChange, label, icon } = props
+    return <div className={s.my_input_wrapper}>
+        {label ? <div className={s.my_input_label}>{label}</div> : null}
+        {icon ? <div className={s.inp_icon_div}>{icon}</div> : null}
+        <input
+            className={s.my_input}
+            style={{
+                ...customStyle
+            }}
+            type={type}
+            onChange={(e) => { onChange && onChange(e.target.value) }}></input>
     </div>
 }
 
 export const MyButton = (props) => {
-    const { type, onClickFn, customStyle } = props
+    const { type, onClick, customStyle } = props
     return <button
         style={customStyle}
         type={type}
         className={s.my_button}
-        onClick={onClickFn}>{props.children}</button>
+        onClick={onClick}>{props.children}</button>
 }
 
 export const MyHr = (props) => {

@@ -1,20 +1,5 @@
-.loginHeader {
-    background-color: #52CAC6;
-    padding: 40px;
-}
-
-.loginHeader h2 {
-    text-align: center;
-    color: white;
-}
-
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 32rem;
-    width: 32%;
-    margin: auto;
+    flex: 1;
 }
 
 .errorMessage {
@@ -23,10 +8,34 @@
     font-size: 12px;
 }
 
-.loginWrapper{
-    /* background-color: #eff3fc; */
-    padding-top: 4rem;
+.loginWrapper {
+    background-image: url("./../../Assets/images/LoginPageBg.png");
+    height: 100vh;
+    display: flex;
+    background-repeat: no-repeat;
+}
+
+.loginPageLineBg {
+    background-image: url("./../../Assets/images/LinesBg.png");
+    flex: 1;
+    position: relative;
+    background-repeat: no-repeat;
+}
+
+.logoImgDiv {
+    position: absolute;
+    top: 45%;
+    left: 35%;
+}
+
+
+.loginSide {
+    background-color: #f0f1f5;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .alertDanger {
@@ -106,3 +115,25 @@
     background-color: #286090;
 }
 
+.headerName {
+    font-size: 28px;
+    color: #c71739;
+}
+
+.loginForm {
+    flex: 2;
+}
+
+.headerName {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 5rem;
+}
+
+.buttonDiv {
+    display: flex;
+    justify-content: space-between;
+    padding-left: .5rem;
+    padding-right: .5rem;
+}
