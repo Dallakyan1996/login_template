@@ -2,14 +2,14 @@ import ParallerChart from "../Components/Charts/ParallerChart";
 // import PieChart from "../Components/Charts/PieChart";
 // import LineChart from "../Components/Charts/LineChart";
 import ChangePassword from "../Pages/ChangePassword/ChangePassword";
+import Dashboard from "../Pages/Dashboard/Dashboard";
 import PageNotFound from "../Pages/PageNotFound/PageNotFound";
-import RulesComponent from "../Pages/RulesPage/RulesComp"
 
 export const routes_arr = [
     {
         path: "/",
         exact: true,
-        component: <RulesComponent />
+        component: <Dashboard />
     },
     {
         path: "/line",

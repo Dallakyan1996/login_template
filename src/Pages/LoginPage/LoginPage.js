@@ -37,7 +37,7 @@ const LoginPage = () => {
                 fontWeight: "900",
                 paddingLeft: ".5rem",
                 paddingBottom: ".5rem",
-                color:"#566681"
+                color: "#566681"
               }}>Log In</div>
               <div className={s.formGroup}>
                 <MyInput

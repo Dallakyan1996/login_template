@@ -1,0 +1,44 @@
+.cardsWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardIconDiv {
+    width: 22px;
+    height: 25px;
+    background: #4AB2F1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50%
+}
+
+.cardIcon {
+    width: 20px;
+    fill: white;
+    height: 20px;
+}
+
+.cardNameSpan {
+    padding-left: 1rem;
+    color: #314565;
+    font-weight: 700;
+}
+
+.countDiv {
+    font-size: 34px;
+    font-weight: bold;
+    color: #314565;
+    padding-right: 1rem;
+}
+
+.rightCardsWrapp {
+    display: flex;
+    width: 33%;
+    justify-content: space-between;
+    border-right: solid 2px #b9b6b660;
+    margin-right: 1rem;
+    height: 2rem;
+    align-items: center;
+}

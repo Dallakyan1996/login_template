@@ -54,4 +54,9 @@ export const MyButton = (props) => {
 export const MyHr = (props) => {
     const { customStyle } = props
     return <hr style={customStyle} className={s.my_hr}></hr>
-} 
+}
+
+export const CircleButton = (props) => {
+    const { icon, isActive } = props
+    return <div className={!isActive ? s.circleBtn : s.activeCircleBtn}></div>
+}

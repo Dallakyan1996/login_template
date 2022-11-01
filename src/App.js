@@ -23,10 +23,10 @@ const App = (props) => {
   return (
     <>
       {currentUser ?
-        <div>
+        <>
           <Header user={props.user} />
           <div className="wrapper">
-            <SideBar />
+            {/* <SideBar />  */}
             <div id="content" className="content">
               <Switch>
                 {routes_arr.map(route => {
@@ -40,7 +40,7 @@ const App = (props) => {
             </div>
           </div>
           {changePasswordIsOpen ? <ChangePassword /> : null}
-        </div> : <Redirect to="/login" />}
+        </> : <Redirect to="/login" />}
       <Route exact path="/login" component={LoginPage} />
     </>
   );
