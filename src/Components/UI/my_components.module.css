@@ -90,6 +90,7 @@ input:-webkit-autofill,
 textarea:-webkit-autofill,
 select:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px #f0f1f5 inset !important;
+    box-shadow: 0 0 0 1000px #f0f1f5 inset !important;
 }
 
 .my_input:focus {
@@ -111,4 +112,36 @@ select:-webkit-autofill {
 .my_input_label {
     font-size: 15px;
     padding-bottom: 0.7rem;
+}
+
+.my_radio_input {
+    accent-color: #FF8111;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #FF8111;
+    transition: 0.3s all linear;
+    box-shadow: 1px 1px 6px 3px #c2c2c5a9;
+    cursor: pointer
+}
+
+.my_radio_input:checked {
+    box-shadow: inset 1px 1px 1px 0px rgba(29, 29, 29, 0.3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+    border: 1px solid white;
+}
+
+.my_radio_input:checked:before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    -moz-border-radius: 7.5px;
+    -webkit-border-radius: 7.5px;
+    border-radius: 7.5px;
+    margin-left: .25rem;
+    margin-top: .25rem;
+    background-color: #FF8111
 }

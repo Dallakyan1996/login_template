@@ -2,7 +2,7 @@ import React from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 
-const LineChart = (props) => {
+const ProjectedVsActual = (props) => {
 
     let options = {
         chart: {
@@ -11,6 +11,12 @@ const LineChart = (props) => {
             borderRadius: "24px"
         },
         title: {
+            text: "Statistics",
+            align: "left",
+            style: {
+                color: '#172B4D',
+                fontWeight: 'bold'
+            }
         },
         subtitle: {
         },
@@ -20,11 +26,18 @@ const LineChart = (props) => {
         },
         yAxis: {
             title: {
-                text: ''
-            }
+                text: "Number of Subjects"
+            },
+            plotLines: [{
+                color: "rgb(255, 88, 172)",
+                width: 2,
+                value: .8,
+                dashStyle: "dash"
+            }]
         },
         legend: {
-            enabled: true
+            enabled: true,
+            verticalAlign: 'top'
         },
         credits: {
             enabled: false
@@ -36,8 +49,8 @@ const LineChart = (props) => {
         series: [{
             type: 'areaspline',
             name: 'Projected Enrollment',
-            dashStyle: "dash",
-            color: "#9486fe57",
+            dashStyle: "Dot",
+            color: "#9486fe",
             fillColor: {
                 linearGradient: {
                     x1: 0,
@@ -91,7 +104,7 @@ const LineChart = (props) => {
         {
             type: 'areaspline',
             name: 'Actual Enrollment',
-            dashStyle: "dash",
+            dashStyle: "Dot",
             color: "rgb(255, 88, 172, 50%)",
             fillColor: {
                 linearGradient: {
@@ -156,4 +169,4 @@ const LineChart = (props) => {
     );
 }
 
-export default LineChart;
+export default ProjectedVsActual;

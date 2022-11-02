@@ -1,10 +1,24 @@
 import Cards from "../../Components/Dashboard/Cards";
-import EnrollmentBySite from "../../Components/Dashboard/ChartEnrollBtSite";
-import { MyCard, MyInput } from "../../Components/UI/UiComponents";
-import BarChartRight from "../../Components/Dashboard/BarChartRight";
-import LineChart from "../../Components/Dashboard/LineChart";
+import EnrollmentBySite from "../../Components/Dashboard/Charts/EnrollmentBySite";
+import { MyCard, MyInput, MyRadioInput } from "../../Components/UI/UiComponents";
+import Enrollment from "../../Components/Dashboard/Charts/Enrollment";
+import ProjectedVsActual from "../../Components/Dashboard/Charts/ProjectedVsActual";
+import CRFLockedForms from "../../Components/Dashboard/Charts/CRFLockedForms"
+import QueryBySite from "../../Components/Dashboard/Charts/QueryBySite";
 
 const Dashboard = (props) => {
+
+    const titleStyle = {
+        color: "#314565",
+        fontWeight: 700,
+    }
+
+    const blockStyle = {
+        display: "flex",
+        flexDirection: "column",
+        flex: 1
+    }
+
     return <div style={{
         marginTop: "1rem"
     }}>
@@ -13,79 +27,90 @@ const Dashboard = (props) => {
             display: "flex",
             marginTop: "2rem"
         }}>
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                flex: 1,
-            }}>
-                <span style={{
-                    color: "#314565",
-                    fontWeight: 700,
-                }}>Enrollment By Site</span>
+            <div style={blockStyle}>
+                <span style={titleStyle}>Enrollment By Site</span>
                 <MyCard customStyle={{
                     marginTop: "1rem",
                     width: "100%",
-
+                    // minHeight: "95%",
+                    paddingTop: "1rem"
                 }}>
                     <EnrollmentBySite />
                 </MyCard>
             </div>
-            <div style={{
-                display: "flex",
-                flexDirection: "column",
-                flex: 4,
-            }}>
-                <span
-                    style={{
-                        color: "#314565",
-                        fontWeight: 700,
-                        paddingLeft: "1rem"
-                    }}
-                >Enrollment</span>
+            <div style={
+                {
+                    ...blockStyle,
+                    flex: 4
+                }}>
+                <span style={titleStyle}>Enrollment</span>
                 <MyCard customStyle={{
                     marginTop: "1rem",
+                    paddingTop: "1rem",
                     marginLeft: "1rem",
-                    width: "99%",
                 }}>
-                    <BarChartRight />
+                    <div style={{
+                        display: "flex",
+                        justifyContent: "end",
+                        paddingRight: "1rem"
+                    }}>
+                        <MyRadioInput defaultChecked={true}
+                            id="splitBySites"
+                            name="enrollment"
+                            label="Split by Sites"
+                            onChange={(e) => {
+                                console.log(e.target.id)
+                            }}
+                        />
+                        <MyRadioInput
+                            id="splitByCohorts"
+                            name="enrollment"
+                            label="Split by Cohort"
+                            onChange={(e) => {
+                                console.log(e.target.id)
+                            }}
+                        />
+                    </div>
+                    <Enrollment />
                 </MyCard >
             </div>
         </div>
-
         <div style={{
-            display: "flex",
-            flexDirection: "column",
+            ...blockStyle,
             marginTop: "2rem"
         }}>
-            <span style={{
-                color: "#314565",
-                fontWeight: 700,
-            }}>Projected vs Actual Enrollment</span>
+            <span style={titleStyle}>Projected vs Actual Enrollment</span>
             <MyCard customStyle={{
-                marginTop: "1rem",
-                marginBottom: "1rem",
-                width: "100%",
+                margin: "1rem 0 1rem 0",
             }}>
-                <LineChart />
+                <ProjectedVsActual />
             </MyCard>
         </div>
         <div style={{
             display: "flex",
             flexDirection: "row"
         }}>
-            <MyCard customStyle={{
-                flex: 1,
-                marginRight: "1rem"
-            }}>
-                <EnrollmentBySite />
-            </MyCard>
-            <MyCard customStyle={{
-                flex: 1
-            }}>
-                <EnrollmentBySite />
-            </MyCard>
+            <div style={blockStyle}>
+                <span style={titleStyle}>CRF Reviewed and Locked Forms</span>
+                <MyCard customStyle={{
+                    margin: "1rem 1rem 1rem 0",
+
+                }}>
+
+                    <CRFLockedForms />
+                </MyCard>
+            </div>
+            <div style={blockStyle}>
+                <span style={titleStyle}>Queries by Site</span>
+                <MyCard customStyle={{
+                    margin: "1rem 0 1rem 0",
+                }}>
+
+                    <QueryBySite />
+                </MyCard>
+            </div>
         </div>
-    </div>
+    </div >
 }
 
 export default Dashboard;

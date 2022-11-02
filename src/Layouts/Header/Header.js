@@ -55,44 +55,48 @@ const Header = () => {
             </li>
           })}
         </ul>
-        <div className={s.headerDropDown} ref={dropDownRef} onClick={() => {
-          setOpenDropDown(!openDropDown)
-        }}>
+        <div className={s.headerDropDown}>
           <div className={s.helpDiv}>
-            <span>Help</span>
             <BiInfoCircle />
+            <span>Help</span>
           </div>
-          <div className={s.userNameDiv}>{state?.auth?.user?.name}</div>
-          <BiChevronDown />
-          <a
-            className="drop"
-            href="/#"
-            role="button"
-            id="dropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-          </a>
-          {openDropDown && <div className={s.dropDownMenu} aria-labelledby="dropdownMenuLink">
-            <div className={s.navLinkDropDow}
-              style={{
-                cursor: "pointer"
-              }}
-              onClick={() => {
-                dispatch({
-                  type: CHANGE_PASSWORD_OPEN
-                })
-              }}>
-              <BiLockAlt />
-              <span>Change Password</span>
-            </div>
-            <NavLink className={s.navLinkDropDow} to="/login"
-              onClick={logout}>
-              <BiLogIn />
-              <span> Logout</span>
-            </NavLink>
-          </div>}
+          <div style={{
+            display: "flex"
+          }} ref={dropDownRef} onClick={() => {
+            setOpenDropDown(!openDropDown)
+          }}>
+            <div className={s.userNameDiv}>{state?.auth?.user?.name}</div>
+            <BiChevronDown />
+            <a
+              className="drop"
+              href="/#"
+              role="button"
+              id="dropdownMenuLink"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+            </a>
+            {openDropDown && <div className={s.dropDownMenu} aria-labelledby="dropdownMenuLink">
+              <div className={s.navLinkDropDow}
+                style={{
+                  cursor: "pointer"
+                }}
+                onClick={() => {
+                  dispatch({
+                    type: CHANGE_PASSWORD_OPEN
+                  })
+                }}>
+                <BiLockAlt />
+                <span>Change Password</span>
+              </div>
+              <NavLink className={s.navLinkDropDow} to="/login"
+                onClick={logout}>
+                <BiLogIn />
+                <span> Logout</span>
+              </NavLink>
+            </div>}
+          </div>
         </div>
       </div>
     </div>

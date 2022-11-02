@@ -60,3 +60,24 @@ export const CircleButton = (props) => {
     const { icon, isActive } = props
     return <div className={!isActive ? s.circleBtn : s.activeCircleBtn}></div>
 }
+
+export const MyRadioInput = (props) => {
+    const { name, id, defaultChecked, label, onChange } = props
+
+    return <div style={{
+        display: "flex",
+        alignItems: "center",
+        padding: ".5rem"
+    }}>
+        <input className={s.my_radio_input} defaultChecked={defaultChecked} name={name} id={id} type="radio" onChange={(e) => {
+            if (onChange)
+                onChange(e)
+        }} />
+        {label ? <label
+            htmlFor={id}
+            style={{
+                cursor: "pointer",
+                paddingLeft: "6px"
+            }}>{label}</label> : null}
+    </div>
+}

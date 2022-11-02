@@ -1,9 +1,9 @@
-import s from "./dashboard-comp.module.css";
+import s from "./../dashboard-comp.module.css";
 import React from "react";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 
-const BarChartLeft = (props) => {
+const EnrollmentBySite = (props) => {
 
     const serData = [
         { "y": 10, "color": "#3dc1d4" },
@@ -16,7 +16,7 @@ const BarChartLeft = (props) => {
         { "y": 0, "color": "#d279a6" }
     ]
     let key = props.scoreKey; //"metavir", "ishak"
-    let scorePrefix = "Score ";
+    let scorePrefix = "701: Ochsner Clinic Foundation Louisiana";
     let scoreLength = 8;
 
     var colors = "#5645B2,#7764E4,#9283E9,#ADA2EF,#C8C1F4,#E4E0FA,#F2E7F9".split(","); //ishak colors
@@ -145,7 +145,7 @@ const BarChartLeft = (props) => {
                         fontWeight: "bolder",
                     },
                     formatter: function () {
-                        return scorePrefix + this.x;
+                        return scorePrefix;
                     },
                     inside: false,
                     rotation: 0,
@@ -166,4 +166,4 @@ const BarChartLeft = (props) => {
     );
 }
 
-export default BarChartLeft;
+export default EnrollmentBySite;
